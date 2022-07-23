@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>每天唸佛</h1>
 
-    <div class="ui list">
+    <div class="ui list container left aligned">
       <div class="item" v-for = "n in numbers"> <img class="avatar" :src="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
     </div>
 
