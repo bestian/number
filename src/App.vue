@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <div id="nav" class="ui menu">
+      <router-link class = "item" to ="/">首頁</router-link>
+      <router-link class = "item" to ="/about">加總</router-link>
     </div>
     <router-view/>
   </div>
@@ -17,16 +17,13 @@
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50px;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.router-link-exact-active {
+  background-color: #cfc !important;
 }
 </style>
