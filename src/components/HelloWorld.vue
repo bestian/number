@@ -3,12 +3,11 @@
     <h1>每天唸佛</h1>
 
     <div class="ui list container left aligned">
-      <div class="item" v-for = "n in numbers"> <img class="avatar" :src="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
+      <div class="item" v-for = "n in numbers"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
     </div>
 
-    <button class = "ui orange button" @click ="loginGoogle()">google登入以開始</button>
     
-    <form class="ui form" v-show="uid">
+    <form class="ui form" v-show="uid || true">
       <div class="field">
 
         <label>您的姓名/法名：
@@ -25,7 +24,10 @@
       </div>
 
       <div class="field">
-        <button class="ui huge green button" @click="submit()">登錄佛號</button>
+        <div class="ui buttons">
+          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
+          <button class="ui huge green button" @click="submit()">登錄佛號</button>
+        </div>
       </div>
     </form>
 
@@ -61,9 +63,9 @@ export default {
   methods: {
     submit: function () {
       var o = {
-        uid: this.uid,
+        uid: this.uid || '123',
         n: this.name,
-        photoURL: this.photoURL || '',
+        photoURL: this.photoURL || 'https://bestian.github.io/number/img/number.jpeg',
         time: (new Date()).getTime(),
         date: this.date,
         number: this.number
