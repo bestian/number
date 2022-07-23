@@ -2,8 +2,32 @@
   <div class="hello">
     <h1>每天唸佛</h1>
 
+    <form class="ui form" v-show="uid || true">
+      <div class="field">
+
+        <label>您的姓名/法名：
+        <input type="text" name="" v-model = "name"/> </label> 
+      
+      </div>
+      <div class="field">
+        <label>今天日期：</label>
+        <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
+      </div>
+      <div class="field">
+        <label>您今天唸了幾聲佛號：</label>
+        <input type="number" v-model = "number" />
+      </div>
+
+      <div class="field">
+        <div class="ui buttons">
+          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
+          <button class="ui huge green button" @click="submit()">登錄佛號</button>
+        </div>
+      </div>
+    </form>
+
     <div class="ui list container left aligned">
-      <div class="item" v-for = "n in numbers"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
+      <div class="item" v-for = "n in numbers.slice().reverse()"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
     </div>
 
     

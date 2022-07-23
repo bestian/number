@@ -4,6 +4,9 @@
       <router-link class = "item" to ="/">
         <i class ="home icon"/>首頁</router-link>
       <router-link class = "item" to ="/about"><i class ="plus icon"/>加總</router-link>
+      <div class="right menu">
+        <a class = "item" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
+      </div>
     </div>
     <router-view/>
   </div>
