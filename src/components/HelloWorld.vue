@@ -25,7 +25,7 @@
       </div>
 
       <div class="field">
-        <button class="ui huge green button" @click="submit()">登錄佛號!!</button>
+        <button class="ui huge green button" @click="submit()">登錄佛號</button>
       </div>
     </form>
 
