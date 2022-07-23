@@ -3,7 +3,7 @@
     <h1>加總</h1>
     <table class="ui celled table">
       <thead>
-        <tr><th>大名</th>
+        <tr><th>姓名/法名</th>
         <th>佛號</th>
         <th>加總</th>
       </tr></thead>

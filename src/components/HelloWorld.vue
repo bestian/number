@@ -11,7 +11,7 @@
     <form class="ui form" v-show="uid">
       <div class="field">
 
-        <label>您的大名：
+        <label>您的姓名/法名：
         <input type="text" name="" v-model = "name"/> </label> 
       
       </div>
