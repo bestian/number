@@ -49,12 +49,12 @@
   {
    "src": "./maskable_icon.png",
    "sizes": "1080x1080",
-   "purpose": "any maskable"
+   "purpose": "maskable"
   },
   {
    "src": "./maskable_icon_x512.png",
    "sizes": "512x512",
-   "purpose": "any maskable"
+   "purpose": "maskable"
   }
  ]
 }
