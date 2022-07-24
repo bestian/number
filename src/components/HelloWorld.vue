@@ -2,7 +2,7 @@
   <div class="hello">
     <h1>每天唸佛</h1>
 
-    <form class="ui form" v-show="uid || true">
+    <form class="ui form container" v-show="uid || true">
       <div class="field">
 
         <label>您的姓名/法名：
@@ -31,7 +31,7 @@
     </div>
 
     
-    <form class="ui form" v-show="uid || true">
+    <form class="ui form container" v-show="uid || true">
       <div class="field">
 
         <label>您的姓名/法名：
