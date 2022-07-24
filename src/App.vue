@@ -50,7 +50,7 @@ export default {
       this.deferredPrompt = event;
     });
     window.addEventListener("appinstalled", () => {
-      this.deferredPrompt = null;
+      vm.deferredPrompt = null;
       console.log("PWA was installed");
     });
     window.addEventListener('beforeinstallprompt',(event)=>{
