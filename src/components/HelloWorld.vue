@@ -28,7 +28,7 @@
     </form>
 
     <div class="ui list container left aligned">
-      <div class="item" v-for = "n in numbers.slice().reverse()"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
+      <div class="item" v-for = "n in numbers.slice().reverse()" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
     </div>
 
     

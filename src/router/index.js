@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import B88 from '../views/B88.vue'
 
 Vue.use(VueRouter)
 

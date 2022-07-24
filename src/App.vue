@@ -7,7 +7,7 @@
       <div class="right menu">
         <a v-if="!deferredPrompt"
           class="item"
-          @click="install($event)"
+          @click="install()"
         >
           <i class ="download icon"/>
           安裝
@@ -63,7 +63,7 @@ export default {
     })
   },
   methods: {
-    install(e) {
+    install() {
       console.log(this.deferredPrompt)
       if (this.deferredPrompt) {
 

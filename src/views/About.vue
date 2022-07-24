@@ -14,11 +14,11 @@
         <th>加總</th>
       </tr></thead>
       <tbody>
-        <tr v-for = "u in users()">
+        <tr v-for = "u in users()" :key="u">
           <td data-label="Name">{{ u }}</td>
           <td data-label="Number">
              <div class="ui list">
-               <div class="item" v-for="a in  list(u)">
+               <div class="item" v-for="a in  list(u)" :key="a.date+a.n">
                  {{a.date}}: {{a.number}}
                </div>
              </div>
@@ -32,8 +32,6 @@
 
 <script>
 
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
 import { numbersRef } from '../firebase'
 
 export default {
@@ -63,7 +61,6 @@ export default {
     },
     count: function(u) {
       var ans = 0;
-      var key = this.key;
       for (var i = 0; i < this.numbers.length; i++) {
         let n = this.numbers[i].n;
         if (u == n) {
