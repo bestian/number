@@ -97,18 +97,22 @@ export default {
         number: this.number
       }
       if (this.number) {
-        this.$firebaseRefs.numbers.push(o)
-        this.number = 0
+        if (this.numbers.filter(function(u){
+          return u.n == o.n && u.date == o.date
+        }).length == 0) {
+          this.$firebaseRefs.numbers.push(o)
+          this.number = 0
+        } else {
+          window.alert('您今天已經登錄過了，請明天再來')
+        }
       } else {
         window.alert('請輸入您今天唸了幾聲佛號')
       }
     },
     loginGoogle: function () {
-      console.log('a')
       var vm = this
       var provider = new firebase.auth.GoogleAuthProvider()
       firebase.auth().signInWithPopup(provider).then(function (result) {
-        console.log('b')
         // This gives you a Google Access Token. You can use it to access the Google API.
         vm.provider = 'google'
         vm.token = result.credential.accessToken
@@ -121,14 +125,6 @@ export default {
         console.log(decodeURI(result.user.photoURL))
         decodeURI(result.user.photoURL)
         vm.photoURL = decodeURI(result.user.photoURL)
-        for (var i = 0; i < vm.hands.length; i++) {
-          console.log(vm.uid)
-          console.log(vm.hands[i].uid)
-          if (vm.hands[i].uid === vm.uid) {
-            vm.center = vm.hands[i].latlngColumn.split(',')
-            vm.zoom = 13
-          }
-        }
         // ...
       }).catch(function (error) {
         // Handle Errors here.
