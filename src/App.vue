@@ -5,13 +5,13 @@
         <i class ="home icon"/>首頁</router-link>
       <router-link class = "item" to ="/about"><i class ="plus icon"/>加總</router-link>
       <div class="right menu">
-        <a v-if="!deferredPrompt"
+        <!-- <a v-if="!deferredPrompt"
           class="item"
           @click="install()"
         >
           <i class ="download icon"/>
           安裝
-        </a>
+        </a> -->
         <router-link class = "item" to ="/88"><i class ="user icon"/>88佛</router-link>
         <a class = "item fat-only" href="https://sites.google.com/view/innerpurelight/%E9%A6%96%E9%A0%81" target="_blank"><i class ="calendar icon"/>台東永明佛寺</a>
         <a class = "item fat-only" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
