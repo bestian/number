@@ -1,5 +1,11 @@
 <template>
   <div class="about">
+    <div class="ui category search">
+      <div class="ui icon input">
+        <input class="prompt" type="text" placeholder="Search..." v-model="key">
+        <i class="search icon"></i>
+      </div>
+    </div>
     <h1>加總</h1>
     <table class="ui celled table">
       <thead>
@@ -36,17 +42,25 @@ export default {
     numbers: numbersRef
   },
   data: () => ({
-      numbers: []
+      numbers: [],
+      key: '',
   }),
   methods: {
     list: function(u) {
+      var key = this.key;
       var ans = this.numbers.filter(function(k) {
         return k.n == u
       });
+      if (key) {
+        ans = ans.filter(function(k) {
+          return k.n.indexOf(key) > -1
+        })
+      }
       return ans
     },
     count: function(u) {
       var ans = 0;
+      var key = this.key;
       for (var i = 0; i < this.numbers.length; i++) {
         let n = this.numbers[i].n;
         if (u == n) {
@@ -54,15 +68,20 @@ export default {
         }
       }
       return ans;
-
     },
     users: function () {
       var u = [];
+      var key = this.key;
       for (var i = 0; i < this.numbers.length; i++) {
         let n = this.numbers[i].n;
         if (u.indexOf(n) == -1) {
           u.push(n);
         }
+      }
+      if (key) {
+        u = u.filter(function(k) {
+          return k.indexOf(key) > -1
+        })
       }
       return u;
     }
