@@ -42,6 +42,13 @@ export default {
   },
   created() {
     var vm = this;
+    this.$on("canInstall", (event) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt:
+      event.preventDefault();
+
+      // Stash the event so it can be triggered later:
+      this.deferredPrompt = event;
+    });
     window.addEventListener("appinstalled", () => {
       this.deferredPrompt = null;
       console.log("PWA was installed");
