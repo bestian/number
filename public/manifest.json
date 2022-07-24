@@ -6,6 +6,7 @@
  "display": "fullscreen",
  "orientation": "landscape",
  "start_url": "./index.html",
+ "description": "這是一個統計唸佛號的小程式，您可以每天登錄您唸的佛號數",
  "theme_color": "white",
  "background_color": "white",
  "icons": [
