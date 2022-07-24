@@ -9,6 +9,7 @@
           class="item"
           @click="install($event)"
         >
+          <i class ="download icon"/>
           安裝
         </a>
         <router-link class = "item" to ="/88"><i class ="user icon"/>88佛</router-link>
@@ -22,6 +23,9 @@
 
 <script>
 import { BeforeInstallPromptEvent } from "vue-pwa-install";
+
+console.log(BeforeInstallPromptEvent)
+
 
 export default {
   name: 'App',
@@ -38,6 +42,10 @@ export default {
   },
   created() {
     var vm = this;
+    window.addEventListener("appinstalled", () => {
+      this.deferredPrompt = null;
+      console.log("PWA was installed");
+    });
     window.addEventListener('beforeinstallprompt',(event)=>{
       console.log('Default a2hs triggered' ,event);
       // here preventing default prompt
@@ -49,7 +57,7 @@ export default {
   },
   methods: {
     install(e) {
-      console.log(e)
+      console.log(this.deferredPrompt)
       if (this.deferredPrompt) {
 
       // Show the prompt:
