@@ -37,7 +37,7 @@ import 'firebase/compat/auth';
 import { numbersRef } from '../firebase'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Sum',
   firebase: {
     numbers: numbersRef
   },
