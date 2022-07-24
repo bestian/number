@@ -1,5 +1,7 @@
 {
+ "id": "/number//",
  "name": "唸佛號",
+ "short_name": "唸佛號",
  "icons": [
   {
    "src": "./android-icon-36x36.png",
