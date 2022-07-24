@@ -67,6 +67,9 @@ import { numbersRef } from '../firebase'
 
 export default {
   name: 'HelloWorld',
+  metaInfo: {
+    title: '歡迎',
+  },
   firebase: {
     numbers: numbersRef
   },

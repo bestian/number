@@ -38,6 +38,9 @@ import { numbersRef } from '../firebase'
 
 export default {
   name: 'Sum',
+  metaInfo: {
+    title: '加總',
+  },
   firebase: {
     numbers: numbersRef
   },

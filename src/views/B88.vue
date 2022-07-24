@@ -9,6 +9,9 @@
 
 export default {
   name: 'B88',
+  metaInfo: {
+    title: '88佛拜懺',
+  },
   data: () => ({
   }),
   methods: {
