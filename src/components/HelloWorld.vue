@@ -99,6 +99,8 @@ export default {
       if (this.number) {
         this.$firebaseRefs.numbers.push(o)
         this.number = 0
+      } else {
+        window.alert('請輸入您今天唸了幾聲佛號')
       }
     },
     loginGoogle: function () {
