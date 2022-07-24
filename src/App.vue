@@ -5,7 +5,8 @@
         <i class ="home icon"/>首頁</router-link>
       <router-link class = "item" to ="/about"><i class ="plus icon"/>加總</router-link>
       <div class="right menu">
-        <a class = "item" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
+        <router-link class = "item" to ="/88"><i class ="user icon"/>88佛</router-link>
+        <a class = "item fat-only" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
       </div>
     </div>
     <router-view/>
@@ -34,5 +35,18 @@ label, input {
 
 .router-link-exact-active {
   background-color: #cfc !important;
+}
+
+@media screen and (min-width: 601px) {
+  .thin-only {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .fat-only {
+    display: none !important;
+  }
 }
 </style>
