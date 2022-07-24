@@ -20,8 +20,9 @@
 
       <div class="field">
         <div class="ui buttons">
-          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
           <button class="ui huge green button" @click="submit()">登錄佛號</button>
+          <div class="or"></div>
+          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
         </div>
       </div>
     </form>
@@ -49,8 +50,9 @@
 
       <div class="field">
         <div class="ui buttons">
-          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
           <button class="ui huge green button" @click="submit()">登錄佛號</button>
+          <div class="or"></div>
+          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
         </div>
       </div>
     </form>
