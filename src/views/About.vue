@@ -19,11 +19,13 @@
           <td data-label="Number">
              <div class="ui list">
                <div class="item" v-for="a in  list(u)" :key="a.date+a.n">
-                 {{a.date}}: {{a.number}}
+                 {{a.date}}: <span class="highlight">{{a.number}}聲</span>
                </div>
              </div>
           </td>
-          <td data-label="Total">總共{{ count(u) }}聲佛號</td>
+          <td data-label="Total">總共<br/>
+          <span class="highlight">{{ count(u) }}聲</span>
+          <br/>佛號</td>
         </tr>
       </tbody>
     </table>
@@ -88,3 +90,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.highlight {
+  display: inline-block;
+  background-color: gold;
+}
+
+</style>

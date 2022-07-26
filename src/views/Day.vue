@@ -10,7 +10,7 @@
       <tbody>
         <tr v-for = "d in days().slice().reverse()" :key="d">
           <td data-label="Name">{{ d }}</td>
-          <td data-label="Total">總共{{ count(d) }}聲佛號</td><td data-label="Total">永明佛寺總共{{ countY(d) }}聲佛號</td>
+          <td data-label="Total">總共<span class="highlight">{{ count(d) }}聲</span>佛號</td><td data-label="Total">永明佛寺總共<span class="highlight">{{ countY(d) }}聲</span>佛號</td>
         </tr>
       </tbody>
     </table>
@@ -66,3 +66,12 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.highlight {
+  display: inline-block;
+  background-color: gold;
+}
+
+</style>
