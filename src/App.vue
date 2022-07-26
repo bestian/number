@@ -34,7 +34,7 @@ export default {
     // if no subcomponents specify a metaInfo.title, this title will be used
     title: '歡迎',
     // all titles will be injected into this template
-    titleTemplate: '%s | 永明佛寺唸佛號',
+    titleTemplate: '%s | 永明佛寺念佛號',
   },
   data() {
     return {

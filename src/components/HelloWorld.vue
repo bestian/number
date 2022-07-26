@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>永明佛寺-每天唸佛</h1>
+    <h1>永明佛寺每天念佛</h1>
 
     <div class="ui segment container">
       <h3 class ="ui header"> 使用說明</h3>
@@ -19,7 +19,7 @@
         <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
       </div>
       <div class="field">
-        <label>您今天唸了幾聲佛號：</label>
+        <label>您今天念了幾聲佛號：</label>
         <input type="number" v-model = "number" />
       </div>
 
@@ -33,7 +33,7 @@
     </form>
 
     <div class="ui list container left aligned">
-      <div class="item" v-for = "n in numbers.slice().reverse()" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  唸了 {{n.number}} 聲佛號!! </div>
+      <div class="item" v-for = "n in numbers.slice().reverse()" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  念了 {{n.number}} 聲佛號!! </div>
     </div>
 
     
