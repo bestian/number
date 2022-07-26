@@ -1,11 +1,5 @@
 <template>
   <div class="about">
-    <div class="ui category search">
-      <div class="ui icon input">
-        <input class="prompt" type="text" placeholder="Search..." v-model="key">
-        <i class="search icon"></i>
-      </div>
-    </div>
     <h1>榮譽榜</h1>
     <table class="ui celled table">
       <thead>
@@ -15,7 +9,12 @@
       <tbody>
         <tr v-for = "d in days().slice().reverse()" :key="d">
           <td data-label="Name">{{ d }}</td>
-          <td data-label="Total">{{ nameF(d) }}: <span class="highlight">{{ countF(d) }}聲</span>佛號</td>
+          <td data-label="Total">1
+           {{ nameF(d)[0] }}: <span class="highlight">{{ countF(d)[0] }}聲</span>佛號
+          <br/>2
+           {{ nameF(d)[1] }}: <span class="highlight">{{ countF(d)[1] }}聲</span>佛號
+          <br/>3. {{ nameF(d)[2] }}: <span class="highlight">{{ countF(d)[2] }}聲</span>佛號</td>
+          <br/>
         </tr>
       </tbody>
     </table>
@@ -39,15 +38,13 @@ export default {
       key: '',
   }),
   methods: {
-    list: function(u) {
-      var key = this.key;
-      var ans = this.numbers.filter(function(k) {
-        return k.n == u
-      });
-      if (key) {
-        ans = ans.filter(function(k) {
-          return k.n.indexOf(key) > -1
-        })
+    days: function (){
+      var ans = [];
+      for (var i = 0; i < this.numbers.length; i++) {
+        let d = this.numbers[i].date;
+        if (ans.indexOf(d) == -1) {
+          ans.push(d)
+        }
       }
       return ans
     },
@@ -55,17 +52,23 @@ export default {
       var list = this.numbers.filter(function(k) {
         return k.date == d
       })
-      var ans = list.slice().sort(function(a, b) {
-        return a.number > b.number
-      })[0].number
+      list.sort(function(a, b) {
+        return parseInt(b.number) - parseInt(a.number)
+      })
+
+      var ans = list.slice(0,3).map(function(u) { return u.number });
+      return ans;
     },
     nameF: function(d) {
       var list = this.numbers.filter(function(k) {
         return k.date == d
       })
-      var ans = list.slice().sort(function(a, b) {
-        return a.number > b.number
-      })[0].n
+      list.sort(function(a, b) {
+        return parseInt(b.number) - parseInt(a.number)
+      })
+
+      var ans = list.slice(0,3).map(function(u) { return u.n });
+      return ans;
     }
   }
 }

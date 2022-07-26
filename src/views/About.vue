@@ -52,8 +52,21 @@ export default {
     list: function(u) {
       var key = this.key;
       var ans = this.numbers.filter(function(k) {
-        return k.n == u
+        var re = /(.+)?[\/／\s]+/;
+        let n = k.n.replace(re, '');
+        let u2 = u.replace(re, '');
+        re = /(.+)?（(.+)）.*/;
+        n = n.replace(re, '$2');
+        re = /(.+)?（(.+)）.*/;
+        u2 = u2.replace(re, '$2');
+        if (u == '淨無') {
+           console.log(n);
+        }
+        return n == u2;
       });
+      if (u == '淨無') {
+       console.log(ans);
+      }
       if (key) {
         ans = ans.filter(function(k) {
           return k.n.indexOf(key) > -1
@@ -64,7 +77,12 @@ export default {
     count: function(u) {
       var ans = 0;
       for (var i = 0; i < this.numbers.length; i++) {
-        let n = this.numbers[i].n;
+        var re = /(.+)?[\/／\s]+/;
+        let n = this.numbers[i].n.replace(re, '');
+        u = u.replace(re, '');
+        re = /(.+)?（(.+)）.*/;
+        n = n.replace(re, '$2');
+        u = u.replace(re, '$2');
         if (u == n) {
           ans += parseInt(this.numbers[i].number, 10);
         }
@@ -75,7 +93,10 @@ export default {
       var u = [];
       var key = this.key;
       for (var i = 0; i < this.numbers.length; i++) {
-        let n = this.numbers[i].n;
+        var re = /(.+?)[\/\s]/;
+        let n = this.numbers[i].n.replace(re, '');
+        re = /(.+)?（(.+)）.*/
+        n = n.replace(re, '$2');
         if (u.indexOf(n) == -1) {
           u.push(n);
         }

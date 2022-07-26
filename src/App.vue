@@ -5,6 +5,7 @@
         <i class ="home icon"/>首頁</router-link>
       <router-link class = "item" to ="/about"><i class ="plus icon"/>加總</router-link>
       <router-link class = "item" to ="/day"><i class ="calendar icon"/>每日</router-link>
+      <router-link class = "item" to ="/rank"><i class ="users icon"/>榮譽</router-link>
       <div class="right menu">
         <!-- <a v-if="!deferredPrompt"
           class="item"
