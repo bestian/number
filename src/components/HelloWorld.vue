@@ -2,6 +2,11 @@
   <div class="hello">
     <h1>每天唸佛</h1>
 
+    <div class="ui segment container">
+      <h3 class ="ui header"> 使用說明</h3>
+      <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按登錄佛號按鈕即可</p>
+    </div>
+
     <form class="ui form container" v-show="uid || true">
       <div class="field">
 
