@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>每天唸佛</h1>
+    <h1>永明佛寺-每天唸佛</h1>
 
     <div class="ui segment container">
       <h3 class ="ui header"> 使用說明</h3>
