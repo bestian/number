@@ -8,19 +8,21 @@
     </div>
 
     <form class="ui form container" v-show="uid || true">
-      <div class="field">
+      <div class="fields">
+        <div class="field">
 
-        <label>您的姓名/法名：
-        <input type="text" name="" v-model = "name"/> </label> 
-      
-      </div>
-      <div class="field">
-        <label>今天日期：</label>
-        <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
-      </div>
-      <div class="field">
-        <label>您今天念了幾聲佛號：</label>
-        <input type="number" v-model = "number" />
+          <label>您的姓名/法名：
+          <input type="text" name="" v-model = "name"/> </label> 
+        
+        </div>
+        <div class="field">
+          <label>今天日期：</label>
+          <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
+        </div>
+        <div class="field">
+          <label>您今天念了幾聲佛號：</label>
+          <input type="number" v-model = "number" />
+        </div>
       </div>
 
       <div class="field">
@@ -32,25 +34,30 @@
       </div>
     </form>
 
+    <div class="ui divider"></div>
+    
     <div class="ui list container left aligned">
       <div class="item" v-for = "n in numbers.slice().reverse()" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  念了 {{n.number}} 聲佛號!! </div>
     </div>
 
+    <div class="ui divider"></div>
     
     <form class="ui form container" v-show="uid || true">
-      <div class="field">
+      <div class="fields">
+        <div class="field">
 
-        <label>您的姓名/法名：
-        <input type="text" name="" v-model = "name"/> </label> 
-      
-      </div>
-      <div class="field">
-        <label>今天日期：</label>
-        <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
-      </div>
-      <div class="field">
-        <label>您今天唸了幾聲佛號：</label>
-        <input type="number" v-model = "number" />
+          <label>您的姓名/法名：
+          <input type="text" name="" v-model = "name"/> </label> 
+        
+        </div>
+        <div class="field">
+          <label>今天日期：</label>
+          <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
+        </div>
+        <div class="field">
+          <label>您今天念了幾聲佛號：</label>
+          <input type="number" v-model = "number" />
+        </div>
       </div>
 
       <div class="field">
