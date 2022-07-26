@@ -93,6 +93,10 @@ export default {
 
 <style scoped>
 
+td {
+  max-width:33vw !important;
+}
+
 .highlight {
   display: inline-block;
   background-color: gold;
