@@ -61,7 +61,7 @@ export default {
         return parseInt(b.number) - parseInt(a.number)
       })
 
-      var ans = list.slice(0,3).map(function(u) { return u.number });
+      var ans = list.slice(0,3).map(function(u) { return parseInt(u.number) });
       return ans;
     },
     nameF: function(d) {
