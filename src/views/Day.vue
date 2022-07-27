@@ -69,11 +69,4 @@ export default {
 
 <style scoped>
 
-.highlight {
-  display: inline-block;
-  background-color: gold;
-  padding: 0 0.5em;
-  border-radius: 10px;
-}
-
 </style>
