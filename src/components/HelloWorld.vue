@@ -38,7 +38,7 @@
     <div class="ui divider"></div>
 
     <div class="ui list container left aligned">
-      <div class="item" v-for = "n in numbers.slice().reverse()" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}  念了<span class="highlight"> {{n.number}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "n in numbers.slice().reverse()" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{n.number}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui divider"></div>
