@@ -1,9 +1,9 @@
 <template>
   <div class="about">
     <h1>榮譽榜</h1>
-    <div class="ui segment container" v-show="!dismiss">
+    <div class="ui segment container" v-show="!dismiss2">
       <h3 class ="ui header"> 說明</h3>
-      <p>每個人的時間許可不同，請不要有壓力&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss2 = true">不再顯示提示</a></p>
+      <p>大家隨喜念佛，加油喔&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss2 = true">不再顯示提示</a></p>
     </div>
     <table class="ui celled table">
       <thead>
@@ -15,9 +15,11 @@
         <tr v-for = "d in days().slice().reverse()" :key="d">
           <td data-label="Name">{{ d }}</td>
           <td data-label="Total" v-show="nameF(d)[0]">
-            <div>第一名: {{ nameF(d)[0] }}<span class="highlight">{{ countF(d)[0] }}聲</span><br class="thin-only"/>佛號</div>
-            <div v-show="nameF(d)[1]">第二名: {{ nameF(d)[1] }}<span class="highlight">{{ countF(d)[1] }}聲</span><br class="thin-only"/>佛號</div>
-            <div v-show="nameF(d)[2]">第三名: {{ nameF(d)[2] }}<span class="highlight">{{ countF(d)[2] }}聲</span><br class="thin-only"/>佛號</div></td>
+            <div>第一名: {{ nameF(d)[0] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[0] }}聲</span><br class="thin-only"/>佛號</div>
+            <div class="ui divider"></div>
+            <div v-show="nameF(d)[1]">第二名: {{ nameF(d)[1] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[1] }}聲</span><br class="thin-only"/>佛號</div>
+            <div class="ui divider"></div>
+            <div v-show="nameF(d)[2]">第三名: {{ nameF(d)[2] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[2] }}聲</span><br class="thin-only"/>佛號</div></td>
           <br/>
         </tr>
       </tbody>
@@ -92,7 +94,6 @@ export default {
 <style scoped>
 
 td {
-  max-width:33vw !important;
 }
 
 </style>
