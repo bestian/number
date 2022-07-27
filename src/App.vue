@@ -109,9 +109,9 @@ export default {
   width: 50px;
   height: 50px;
   border-radius: 25px;
-  -webkit-animation:spin 4s linear infinite;
-  -moz-animation:spin 4s linear infinite;
-  animation:spin 4s linear infinite;
+  -webkit-animation:spin 4s 2 linear;
+  -moz-animation:spin 4s 2 linear;
+  animation:spin 4s 2 linear;
 }
 
 @-webkit-keyframes spin {
