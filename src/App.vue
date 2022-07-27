@@ -144,6 +144,36 @@ export default {
   }
 }
 
+@-webkit-keyframes jump {
+  0% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(1.2);
+    transform: scaleY(1.2);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
+@keyframes jump {
+  0% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+  50% {
+    -webkit-transform: scaleY(1.2);
+    transform: scaleY(1.2);
+  }
+  100% {
+    -webkit-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+}
+
 label, input {
   font-size: 18px !important;
 }
@@ -170,5 +200,7 @@ label, input {
   background-color: #9f9;
   padding: 0 0.5em;
   border-radius: 10px;
+  -webkit-animation: jump 1s linear infinite;
+  animation: jump 1s linear infinite;
 }
 </style>
