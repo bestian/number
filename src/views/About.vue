@@ -66,7 +66,7 @@ export default {
           return k.n.indexOf(key) > -1
         })
       }
-      return ans
+      return ans.slice().reverse()
     },
     count: function(u) {
       var ans = 0;
@@ -112,4 +112,9 @@ td {
   max-width:33vw !important;
 }
 
+@media screen and (max-width: 600px) {
+  td {
+    max-width:100vw !important;
+  }
+}
 </style>

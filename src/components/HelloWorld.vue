@@ -38,7 +38,7 @@
     <div class="ui divider"></div>
 
     <div class="ui list container left aligned">
-      <div class="item" v-for = "n in numbers.slice().reverse()" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "n in s(numbers)" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui divider"></div>
@@ -105,6 +105,15 @@ export default {
 
   }),
   methods: {
+    s: function (list) {
+      var l = list.slice().sort(function(a, b) {
+        var arr1 = a.date.split('/');
+        var arr2 = b.date.split('/');
+        var ans = (parseInt(arr2[0]) * 365 + parseInt(arr2[1]) * 30 + parseInt(arr2[2])) - (parseInt(arr1[0]) * 365 + parseInt(arr1[1]) * 30 + parseInt(arr1[2]));
+        return ans;
+      })
+      return l
+    },
     submit: function () {
       var o = {
         uid: this.uid || '123',
