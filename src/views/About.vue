@@ -59,14 +59,8 @@ export default {
         n = n.replace(re, '$2');
         re = /(.+)?（(.+)）.*/;
         u2 = u2.replace(re, '$2');
-        if (u == '淨無') {
-           console.log(n);
-        }
         return n == u2;
       });
-      if (u == '淨無') {
-       console.log(ans);
-      }
       if (key) {
         ans = ans.filter(function(k) {
           return k.n.indexOf(key) > -1
