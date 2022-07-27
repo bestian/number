@@ -1,6 +1,10 @@
 <template>
   <div class="about">
     <h1>榮譽榜</h1>
+    <div class="ui segment container" v-show="!dismiss">
+      <h3 class ="ui header"> 說明</h3>
+      <p>每個人的時間許可不同，請不要有壓力&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss2 = true">不再顯示提示</a></p>
+    </div>
     <table class="ui celled table">
       <thead>
         <tr><th><i class="calendar icon"/>日期</th>
@@ -36,6 +40,7 @@ export default {
   data: () => ({
       numbers: [],
       key: '',
+      dismiss2: false
   }),
   methods: {
     days: function (){
@@ -69,6 +74,16 @@ export default {
 
       var ans = list.slice(0,3).map(function(u) { return u.n });
       return ans;
+    }
+  },
+  mounted() {
+    if (localStorage.dismiss2) {
+      this.dismiss2 = localStorage.dismiss2;
+    }
+  },
+  watch: {
+    dismiss2(newDismiss) {
+      localStorage.dismiss2 = newDismiss;
     }
   }
 }
