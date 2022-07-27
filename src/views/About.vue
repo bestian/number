@@ -9,9 +9,9 @@
     <h1>加總</h1>
     <table class="ui celled table">
       <thead>
-        <tr><th>姓名/法名</th>
-        <th>佛號</th>
-        <th>加總</th>
+        <tr><th><i class="user icon"/>姓名/法名</th>
+        <th><i class="comment icon"/>佛號</th>
+        <th><i class="plus icon"/>加總</th>
       </tr></thead>
       <tbody>
         <tr v-for = "u in users()" :key="u">

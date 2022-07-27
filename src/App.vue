@@ -8,7 +8,8 @@
         <span class="fat-only">加總</span></router-link>
       <router-link class = "item" to ="/day"><i class ="calendar icon"/>
         <span class="fat-only">每日</span></router-link>
-      <router-link class = "item" to ="/rank"><i class ="users icon"/>
+      <router-link class = "item" to ="/rank"><i class ="chess king
+ icon"/>
         <span class="fat-only">榮譽</span></router-link>
       <div class="right menu">
         <!-- <a v-if="!deferredPrompt"

@@ -12,25 +12,25 @@
       <div class="fields">
         <div class="field">
 
-          <label>您的姓名/法名：
+          <label><i class = "user icon"/>您的姓名/法名：
           <input type="text" name="" v-model = "name"/> </label> 
         
         </div>
         <div class="field">
-          <label>今天日期：</label>
+          <label><i class = "calendar icon"/>今天日期：</label>
           <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
         </div>
         <div class="field">
-          <label>您今天念了幾聲佛號：</label>
+          <label><i class = "comment icon"/>您今天念了幾聲佛號：</label>
           <input type="number" v-model = "number" />
         </div>
       </div>
 
       <div class="field">
         <div class="ui buttons">
-          <button class="ui huge green button" @click="submit()">登錄佛號</button>
+          <button class="ui huge green button" @click="submit()"><i class = "upload icon"/>登錄佛號</button>
           <div class="or"></div>
-          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
+          <button class = "ui huge orange button" @click ="loginGoogle()"><i class = "google icon"/>google登入</button>
         </div>
       </div>
     </form>
@@ -47,25 +47,25 @@
       <div class="fields">
         <div class="field">
 
-          <label>您的姓名/法名：
+          <label><i class = "user icon"/>您的姓名/法名：
           <input type="text" name="" v-model = "name"/> </label> 
         
         </div>
         <div class="field">
-          <label>今天日期：</label>
+          <label><i class = "calendar icon"/>今天日期：</label>
           <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
         </div>
         <div class="field">
-          <label>您今天念了幾聲佛號：</label>
+          <label><i class = "comment icon"/>您今天念了幾聲佛號：</label>
           <input type="number" v-model = "number" />
         </div>
       </div>
 
       <div class="field">
         <div class="ui buttons">
-          <button class="ui huge green button" @click="submit()">登錄佛號</button>
+          <button class="ui huge green button" @click="submit()"><i class = "upload icon"/>登錄佛號</button>
           <div class="or"></div>
-          <button class = "ui huge orange button" @click ="loginGoogle()">google登入</button>
+          <button class = "ui huge orange button" @click ="loginGoogle()"><i class = "google icon"/>google登入</button>
         </div>
       </div>
     </form>

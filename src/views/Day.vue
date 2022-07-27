@@ -3,9 +3,9 @@
     <h1>每日加總</h1>
     <table class="ui celled table">
       <thead>
-        <tr><th>日期</th>
-        <th>加總</th>
-        <th>永明佛寺加總</th>
+        <tr><th><i class="calendar icon"/>日期</th>
+        <th><i class="plus icon"/>加總</th>
+        <th><i class="users icon"/>永明佛寺加總</th>
       </tr></thead>
       <tbody>
         <tr v-for = "d in days().slice().reverse()" :key="d">
