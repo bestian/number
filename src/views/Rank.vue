@@ -30,9 +30,9 @@
 import { numbersRef } from '../firebase'
 
 export default {
-  name: 'Sum',
+  name: 'Rank',
   metaInfo: {
-    title: '加總',
+    title: '榮譽榜',
   },
   firebase: {
     numbers: numbersRef

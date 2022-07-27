@@ -22,7 +22,7 @@
 import { numbersRef } from '../firebase'
 
 export default {
-  name: 'Sum',
+  name: 'Date',
   metaInfo: {
     title: '日期',
   },
