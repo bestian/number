@@ -3,7 +3,7 @@
     <h1>榮譽榜</h1>
     <div class="ui segment container" v-show="!dismiss2">
       <h3 class ="ui header"> 說明</h3>
-      <p>大家隨喜念佛，加油喔&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss2 = true">不再顯示提示</a></p>
+      <p>大家隨喜念佛，別太在意數字，加油喔&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss2 = true">不再顯示提示</a></p>
     </div>
     <table class="ui celled table">
       <thead>
