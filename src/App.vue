@@ -131,4 +131,11 @@ label, input {
     display: none !important;
   }
 }
+
+.highlight {
+  display: inline-block;
+  background-color: #9f9;
+  padding: 0 0.5em;
+  border-radius: 10px;
+}
 </style>
