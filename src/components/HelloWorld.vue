@@ -5,6 +5,7 @@
     <div class="ui segment container">
       <h3 class ="ui header"> 使用說明</h3>
       <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按登錄佛號按鈕即可</p>
+      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向</p>
     </div>
 
     <form class="ui form container" v-show="uid || true">
