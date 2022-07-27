@@ -11,9 +11,9 @@
         <tr v-for = "d in days().slice().reverse()" :key="d">
           <td data-label="Name">{{ d }}</td>
           <td data-label="Total" v-show="nameF(d)[0]">
-            <div>1. {{ nameF(d)[0] }}: <span class="highlight">{{ countF(d)[0] }}聲</span>佛號</div>
-            <div v-show="nameF(d)[1]">2. {{ nameF(d)[1] }}: <span class="highlight">{{ countF(d)[1] }}聲</span>佛號</div>
-            <div v-show="nameF(d)[2]">3. {{ nameF(d)[2] }}: <span class="highlight">{{ countF(d)[2] }}聲</span>佛號</div></td>
+            <div>1. {{ nameF(d)[0] }}: <span class="highlight">{{ countF(d)[0] }}聲</span><br class="thin-only"/>佛號</div>
+            <div v-show="nameF(d)[1]">2. {{ nameF(d)[1] }}: <span class="highlight">{{ countF(d)[1] }}聲</span><br class="thin-only"/>佛號</div>
+            <div v-show="nameF(d)[2]">3. {{ nameF(d)[2] }}: <span class="highlight">{{ countF(d)[2] }}聲</span><br class="thin-only"/>佛號</div></td>
           <br/>
         </tr>
       </tbody>
