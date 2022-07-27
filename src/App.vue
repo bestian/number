@@ -105,9 +105,9 @@ export default {
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
 }
 
 label, input {
