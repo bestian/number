@@ -2,10 +2,10 @@
   <div class="hello">
     <h1>永明佛寺每天念佛</h1>
 
-    <div class="ui segment container">
+    <div class="ui segment container" v-show="!dismiss">
       <h3 class ="ui header"> 使用說明</h3>
       <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按登錄佛號按鈕即可</p>
-      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向</p>
+      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
     </div>
 
     <form class="ui form container" v-show="uid || true">
@@ -100,7 +100,9 @@ export default {
       numbers: [],
       uid: '',
       provider: '',
-      photoURL: ''
+      photoURL: '',
+      dismiss: false
+
   }),
   methods: {
     submit: function () {
@@ -158,10 +160,16 @@ export default {
     if (localStorage.name) {
       this.name = localStorage.name;
     }
+    if (localStorage.dismiss) {
+      this.dismiss = localStorage.dismiss;
+    }
   },
   watch: {
     name(newName) {
       localStorage.name = newName;
+    },
+    dismiss(newDismiss) {
+      localStorage.dismiss = newDismiss;
     }
   }
 }
