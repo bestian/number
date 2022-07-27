@@ -93,7 +93,7 @@ export default {
       var u = [];
       var key = this.key;
       for (var i = 0; i < this.numbers.length; i++) {
-        var re = /(.+?)[\/\s]/;
+        var re = /(.+?)[\/／\s]/;
         let n = this.numbers[i].n.replace(re, '');
         re = /(.+)?（(.+)）.*/
         n = n.replace(re, '$2');
