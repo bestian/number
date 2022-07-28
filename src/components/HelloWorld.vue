@@ -110,7 +110,7 @@ export default {
       var l = list.slice().sort(function(a, b) {
         var arr1 = a.date.split('/');
         var arr2 = b.date.split('/');
-        var ans = (parseInt(arr2[0]) * 365 + parseInt(arr2[1]) * 30 + parseInt(arr2[2])) - (parseInt(arr1[0]) * 365 + parseInt(arr1[1]) * 30 + parseInt(arr1[2]));
+        var ans = (parseInt(arr2[0]) * 36500 + parseInt(arr2[1]) * 3000 + parseInt(arr2[2]) * 100) - (parseInt(arr1[0]) * 36500 + parseInt(arr1[1]) * 3000 + parseInt(arr1[2]) * 100) + parseInt(b.time) - parseInt(a.time);
         return ans;
       })
       return l
@@ -128,13 +128,14 @@ export default {
         if (this.numbers.filter(function(u){
           return u.n == o.n && u.date == o.date
         }).length == 0) {
-          this.$firebaseRefs.numbers.push(o)
-          this.number = 0
+          this.$firebaseRefs.numbers.push(o);
+          this.number = 0;
+          window.alert('登入成功:' + o.n + '今天念了' o.number +  '聲佛號')
         } else {
           window.alert('您今天已經登錄過了，請明天再來')
         }
       } else {
-        window.alert('請輸入您今天唸了幾聲佛號')
+        window.alert('請輸入您今天念了幾聲佛號')
       }
     },
     loginGoogle: function () {
@@ -153,6 +154,7 @@ export default {
         console.log(decodeURI(result.user.photoURL))
         decodeURI(result.user.photoURL)
         vm.photoURL = decodeURI(result.user.photoURL)
+        window.alert('Google 登入成功')
         // ...
       }).catch(function (error) {
         // Handle Errors here.
