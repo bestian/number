@@ -130,7 +130,7 @@ export default {
         }).length == 0) {
           this.$firebaseRefs.numbers.push(o);
           this.number = 0;
-          window.alert('登入成功:' + o.n + '今天念了' o.number +  '聲佛號')
+          window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
         } else {
           window.alert('您今天已經登錄過了，請明天再來')
         }
