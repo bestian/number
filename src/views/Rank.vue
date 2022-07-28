@@ -15,11 +15,11 @@
         <tr v-for = "d in days().slice().reverse()" :key="d">
           <td data-label="Name">{{ d }}</td>
           <td data-label="Total" v-show="nameF(d)[0]">
-            <div>第一名: {{ nameF(d)[0] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[0] }}聲</span><br class="thin-only"/>佛號</div>
+            <div><img src="../assets/fuo.jpg" class="avatar"/>{{ nameF(d)[0] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[0] }}聲</span><br class="thin-only"/>佛號</div>
             <div class="ui divider"></div>
-            <div v-show="nameF(d)[1]">第二名: {{ nameF(d)[1] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[1] }}聲</span><br class="thin-only"/>佛號</div>
+            <div v-show="nameF(d)[1]"><img src="../assets/fuo3.jpg" class="avatar"/>{{ nameF(d)[1] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[1] }}聲</span><br class="thin-only"/>佛號</div>
             <div class="ui divider"></div>
-            <div v-show="nameF(d)[2]">第三名: {{ nameF(d)[2] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[2] }}聲</span><br class="thin-only"/>佛號</div></td>
+            <div v-show="nameF(d)[2]"><img src="../assets/fuo4.jpg" class="avatar"/>{{ nameF(d)[2] }}<br class="thin-only"/><span class="highlight">{{ countF(d)[2] }}聲</span><br class="thin-only"/>佛號</div></td>
           <br/>
         </tr>
       </tbody>
