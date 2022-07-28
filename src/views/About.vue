@@ -19,7 +19,7 @@
           <td data-label="Number">
              <div class="ui list">
                <div class="item" v-for="a in  list(u)" :key="a.date+a.n">
-                 {{a.date}}: <span class="highlight">{{a.number}}聲</span>
+                 {{a.date}}: <span class="highlight">{{parseInt(a.number)}}聲</span>
                </div>
              </div>
           </td>
