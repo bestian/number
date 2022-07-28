@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h1>永明佛寺念佛共修</h1>
+    <h1><img src="../assets/fuo.jpg" class="avatar"/>永明佛寺念佛共修</h1>
 
     <div class="ui segment container" v-show="!dismiss">
       <h3 class ="ui header"> 使用說明</h3>
