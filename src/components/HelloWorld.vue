@@ -119,7 +119,7 @@ export default {
       var o = {
         uid: this.uid || '123',
         n: this.name,
-        photoURL: this.photoURL || 'https://bestian.github.io/number/img/number.jpeg',
+        photoURL: this.photoURL || 'https://bestian.github.io/number/img/number.jpg',
         time: (new Date()).getTime(),
         date: this.date,
         number: this.number
