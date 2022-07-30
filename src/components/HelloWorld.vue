@@ -9,6 +9,12 @@
       <p>回向是針對疫情和法界與地球揚升到淨土，願大眾福慧增長，人人平安，超生淨土&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
     </div>
 
+    <select id="s" class="ui dropdown" v-model="mode">
+      <option value="">模式</option>
+      <option value="today">今日</option>
+      <option value="all">所有</option>
+    </select>
+
     <form class="ui form container" v-show="uid || true">
       <div class="fields">
         <div class="field">
@@ -38,7 +44,11 @@
 
     <div class="ui divider"></div>
 
-    <div class="ui list container left aligned">
+    <div class="ui list container left aligned" v-show="mode == 'today'">
+      <div class="item" v-for = "n in t(s(numbers))" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+    </div>
+
+    <div class="ui list container left aligned" v-show="mode == 'all'">
       <div class="item" v-for = "n in s(numbers)" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
@@ -89,6 +99,7 @@ export default {
   },
   data: () => ({
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
+      mode: 'today',
       number: 0,
       p: '',
       msg: '',
@@ -106,6 +117,12 @@ export default {
 
   }),
   methods: {
+    t:function (list) {
+      var ans = list.filter(function(u) {
+        return u.date == new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate();
+      });
+      return ans;
+    },
     s: function (list) {
       var l = list.slice().sort(function(a, b) {
         var arr1 = a.date.split('/');
@@ -279,6 +296,10 @@ a {
 .tada {
   -webkit-animation: tada 4s linear 3;
   animation: tada 4s linear 3;
+}
+
+#s {
+  font-size: 16px;
 }
 
 </style>
