@@ -19,7 +19,7 @@
           <i class ="download icon"/>
           安裝
         </a> -->
-        <router-link class = "item" to ="/88"><i class ="user icon"/>
+        <router-link class = "item" to ="/88"><i class ="users icon"/>
         <span class="fat-only">88佛</span></router-link>
         <a class = "item fat-only" href="https://sites.google.com/view/innerpurelight/%E9%A6%96%E9%A0%81" target="_blank"><i class ="globe icon"/>台東永明佛寺</a>
         <a class = "item fat-only" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
