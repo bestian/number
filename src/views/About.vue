@@ -15,7 +15,7 @@
       </tr></thead>
       <tbody>
         <tr v-for = "u in users()" :key="u">
-          <td data-label="Name">{{ u }}</td>
+          <td data-label="Name"><h3 class="ui header">{{ u }}</h3></td>
           <td data-label="Number">
              <div class="ui list">
                <div class="item" v-for="a in  list(u)" :key="a.date+a.n">
