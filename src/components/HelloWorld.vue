@@ -9,12 +9,6 @@
       <p>回向是針對疫情和法界與地球揚升到淨土，願大眾福慧增長，人人平安，超生淨土&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
     </div>
 
-    <select id="s" class="ui dropdown" v-model="mode">
-      <option value="">模式</option>
-      <option value="today">今日</option>
-      <option value="all">所有</option>
-    </select>
-
     <form class="ui form container" v-show="uid || true">
       <div class="fields">
         <div class="field">
@@ -43,6 +37,12 @@
     </form>
 
     <div class="ui divider"></div>
+
+    <select id="s" class="ui dropdown" v-model="mode">
+      <option value="">模式</option>
+      <option value="today">今日</option>
+      <option value="all">所有</option>
+    </select>
 
     <div class="ui list container left aligned" v-show="mode == 'today'">
       <div class="item" v-for = "n in t(s(numbers))" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
