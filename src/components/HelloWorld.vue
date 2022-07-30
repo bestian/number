@@ -5,7 +5,7 @@
     <div class="ui segment container" v-show="!dismiss">
       <h3 class ="ui header"> 使用說明</h3>
       <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按登錄佛號按鈕即可</p>
-      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會再晚上7:30-8:00間回向</p>
+      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向</p>
       <p>回向是針對疫情和法界與地球揚升到淨土，願大眾福慧增長，人人平安，超生淨土&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
     </div>
 
