@@ -55,10 +55,10 @@ export default {
         var re = /(.+)?[\/／\|丨\s]+/;
         let n = k.n.replace(re, '');
         let u2 = u.replace(re, '');
-        re = /(.+)?（(.+)）.*/;
+        re = /(.+)?[〈（](.+)[）〉].*/;
         n = n.replace(re, '$2');
         n = n.replace('丨','');
-        re = /(.+)?（(.+)）.*/;
+        re = /(.+)?[〈（](.+)[）〉].*/;
         u2 = u2.replace(re, '$2');
         u2 = u2.replace('丨','');
         return n == u2;
@@ -76,9 +76,9 @@ export default {
         var re = /(.+)?[\/／\|丨\s]+/;
         let n = this.numbers[i].n.replace(re, '');
         n = n.replace('丨','');
-        u = u.replace('丨','');
-        re = /(.+)?（(.+)）.*/;
+        re = /(.+)?[〈（](.+)[）〉].*/;
         n = n.replace(re, '$2');
+        u = u.replace('丨','');
         u = u.replace(re, '$2');
         if (u == n) {
           ans += parseInt(this.numbers[i].number, 10);
@@ -92,7 +92,7 @@ export default {
       for (var i = 0; i < this.numbers.length; i++) {
         var re = /(.+?)[\/／\|丨\s]/;
         let n = this.numbers[i].n.replace(re, '');
-        re = /(.+)?[〈（](.+)[）〉].*/
+        re = /(.+)?[〈（](.+)[）〉].*/;
         n = n.replace(re, '$2');
         n = n.replace('丨','');
         if (u.indexOf(n) == -1) {
