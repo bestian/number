@@ -135,6 +135,10 @@ export default {
       return l
     },
     submit: function () {
+      if (!this.name) {
+        alert('請輸入您的大名');
+        return;
+      }
       var o = {
         uid: this.uid || '123',
         n: this.name,
@@ -143,7 +147,7 @@ export default {
         date: this.date,
         number: this.number
       }
-      if (this.number) {
+      if (this.number && parseInt(this.number) > 0) {
         if (this.numbers.filter(function(u){
           return u.n == o.n && u.date == o.date
         }).length == 0) {
