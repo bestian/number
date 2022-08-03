@@ -75,12 +75,13 @@ export default {
       for (var i = 0; i < this.numbers.length; i++) {
         var re = /(.+)?[\/／\|丨\s]+/;
         let n = this.numbers[i].n.replace(re, '');
+        u = u.replace(re, '');
         n = n.replace('丨','');
         re = /(.+)?[〈（](.+)[）〉].*/;
         n = n.replace(re, '$2');
         u = u.replace('丨','');
         u = u.replace(re, '$2');
-        if (u == n) {
+        if (u === n) {
           ans += parseInt(this.numbers[i].number, 10);
         }
       }
