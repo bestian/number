@@ -2,7 +2,8 @@
   <div class="hello">
     <h1><img src="../assets/fuo.jpg" class="avatar" alt="fuo"/>永明佛寺念佛共修</h1>
 
-    <a class="ui orange button" href="https://play.google.com/store/apps/details?id=tw.bestian.fuo" target="_blank"><i class="google play icon" />下載Google Play App</a>
+    <a class="ui orange button" href="https://play.google.com/store/apps/details?id=tw.bestian.fuo" target="_blank"><i class="google play icon" />下載Google Play App
+    </a>
 
     <div class="ui segment container" v-show="!dismiss">
       <h3 class ="ui header"> 使用說明</h3>
