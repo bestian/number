@@ -23,7 +23,9 @@
         <span class="fat-only">88佛</span></router-link>
         <a class = "item fat-only" href="https://sites.google.com/view/innerpurelight/%E9%A6%96%E9%A0%81" target="_blank"><i class ="globe icon"/>台東永明佛寺</a>
         <a class = "item fat-only" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
-        <a class = "item fat-only" href="https://number-59440-default-rtdb.firebaseio.com/numbers.json" target="_blank"><i class ="download icon"/>資料下載</a>
+        <div class="item">
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fbestian.github.io%2Fnumber%2F%23%2F&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="71" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
       </div>
     </div>
     <router-view/>
