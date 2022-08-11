@@ -205,4 +205,8 @@ label, input {
   -webkit-animation: jump 1s linear infinite;
   animation: jump 1s linear infinite;
 }
+
+a, button {
+  cursor: pointer;
+}
 </style>

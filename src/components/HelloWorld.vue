@@ -1,20 +1,25 @@
 <template>
   <div class="hello">
-    <h1><img src="../assets/fuo.jpg" class="avatar" alt="fuo"/>永明佛寺念佛共修</h1>
+    <h1>
+      <a @click="step = 0"><img src="../assets/fuo.jpg" class="avatar" alt="fuo"/>永明佛寺念佛共修</a></h1>
 
 
     <div class="ui buttons" v-show="step == 0">
-      <a class="ui blue button" href="https://apps.apple.com/tw/app/%E5%BF%B5%E4%BD%9B%E8%99%9F/id1637378153" target="_blank"><i class="app store icon" />App Store下載
+      <a class="ui huge blue button" href="https://apps.apple.com/tw/app/%E5%BF%B5%E4%BD%9B%E8%99%9F/id1637378153" target="_blank"><i class="app store icon" />App Store下載
       </a>
 
-      <a class="ui orange button" href="https://play.google.com/store/apps/details?id=tw.bestian.fuo" target="_blank"><i class="google play icon" />Google Play下載
+      <a class="ui huge orange button" href="https://play.google.com/store/apps/details?id=tw.bestian.fuo" target="_blank"><i class="google play icon" />Google Play下載
       </a>
     </div>
 
     <div class="ui divider" v-show="step == 0"></div>
 
-    <div class="ui buttons" v-show="step == 0">
-      <a class="ui red button" @click="step = 1"><i class="globe icon" />免費試用
+    <a @click="step = 1" v-show="step == 0">
+      <img class = "fuo" src="../assets/fuo.jpg" />
+    </a>
+    <br v-show="step == 0" />
+    <div class="ui buttons up" v-show="step == 0">
+      <a class="ui huge teal button" @click="step = 1"><i class="globe icon" />免費試用
       </a>
     </div>
 
@@ -318,6 +323,14 @@ a {
 
 #s {
   font-size: 16px;
+}
+
+.fuo {
+  width: 33vmin;
+  border-radius: 15px;
+  position: relative;
+  top: 3.8em;
+  z-index: -1;
 }
 
 </style>
