@@ -3,22 +3,30 @@
     <h1><img src="../assets/fuo.jpg" class="avatar" alt="fuo"/>永明佛寺念佛共修</h1>
 
 
-    <div class="ui buttons">
-      <a class="ui blue button" href="https://apps.apple.com/us/app/%E5%BF%B5%E4%BD%9B%E8%99%9F/id1637378153" target="_blank"><i class="app store icon" />App Store下載
+    <div class="ui buttons" v-show="step == 0">
+      <a class="ui blue button" href="https://apps.apple.com/tw/app/%E5%BF%B5%E4%BD%9B%E8%99%9F/id1637378153" target="_blank"><i class="app store icon" />App Store下載
       </a>
 
       <a class="ui orange button" href="https://play.google.com/store/apps/details?id=tw.bestian.fuo" target="_blank"><i class="google play icon" />Google Play下載
       </a>
     </div>
 
-    <div class="ui segment container" v-show="!dismiss">
+    <div class="ui divider" v-show="step == 0"></div>
+
+    <div class="ui buttons" v-show="step == 0">
+      <a class="ui red button" @click="step = 1"><i class="globe icon" />免費試用
+      </a>
+    </div>
+
+
+    <div class="ui segment container" v-show="!dismiss && step == 1">
       <h3 class ="ui header"> 使用說明</h3>
       <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按「登錄佛號」按鈕即可</p>
       <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向</p>
       <p>回向是針對疫情和法界與地球揚升到淨土，願大眾福慧增長，人人平安，超生淨土&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
     </div>
 
-    <form class="ui form container" v-show="uid || true">
+    <form class="ui form container" v-show="step == 1">
       <div class="fields">
         <div class="field">
 
@@ -45,25 +53,25 @@
       </div>
     </form>
 
-    <div class="ui divider"></div>
+    <div class="ui divider" v-show="step == 1"></div>
 
-    <select id="s" class="ui dropdown" v-model="mode">
+    <select id="s" class="ui dropdown" v-model="mode" v-show="step == 1">
       <option value="">模式</option>
       <option value="today">今日</option>
       <option value="all">所有</option>
     </select>
 
-    <div class="ui list container left aligned" v-show="mode == 'today'">
+    <div class="ui list container left aligned" v-show="mode == 'today' && step == 1">
       <div class="item" v-for = "n in t(s(numbers))" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
-    <div class="ui list container left aligned" v-show="mode == 'all'">
+    <div class="ui list container left aligned" v-show="mode == 'all' && step == 1">
       <div class="item" v-for = "n in s(numbers)" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
-    <div class="ui divider"></div>
+    <div class="ui divider" v-show="step == 1"></div>
     
-    <form class="ui form container" v-show="numbers[0]">
+    <form class="ui form container" v-show="numbers[0] && step == 1">
       <div class="fields">
         <div class="field">
 
@@ -107,6 +115,7 @@ export default {
     numbers: numbersRef
   },
   data: () => ({
+      step: 0,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
       mode: 'today',
       number: 0,
