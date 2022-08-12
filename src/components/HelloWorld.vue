@@ -3,6 +3,7 @@
     <h1>
       <a @click="step = 0"><img src="../assets/fuo.jpg" class="avatar" alt="fuo"/>永明佛寺念佛共修</a></h1>
 
+    <h2 v-show="step == 0">App免費下載</h2>
 
     <div class="ui buttons" v-show="step == 0">
       <a class="ui huge blue button" href="https://apps.apple.com/tw/app/%E5%BF%B5%E4%BD%9B%E8%99%9F/id1637378153" target="_blank"><i class="app store icon" />App Store下載
@@ -19,7 +20,7 @@
     </a>
     <br v-show="step == 0" />
     <div class="ui buttons up" v-show="step == 0">
-      <a class="ui huge teal button" @click="step = 1"><i class="globe icon" />免費試用
+      <a class="ui huge teal button" @click="step = 1"><i class="globe icon" />網站版
       </a>
     </div>
 
@@ -34,18 +35,21 @@
     <form class="ui form container" v-show="step == 1">
       <div class="fields">
         <div class="field">
+          <label><i class = "calendar icon"/>今天日期：{{date}}</label>
+        </div>
+        <div class="field">
 
           <label><i class = "user icon"/>您的姓名/法名：
           <input type="text" name="" v-model = "name"/> </label> 
         
         </div>
         <div class="field">
-          <label><i class = "calendar icon"/>今天日期：</label>
-          <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
-        </div>
-        <div class="field">
           <label><i class = "comment icon"/>您今天念了幾聲佛號：</label>
           <input type="number" v-model = "number" />
+        </div>
+        <div class="field">
+          <label><i class = "comment icon"/>您念佛號的原因：</label>
+          <input type="number" v-model = "reason" />
         </div>
       </div>
 
@@ -79,18 +83,21 @@
     <form class="ui form container" v-show="numbers[0] && step == 1">
       <div class="fields">
         <div class="field">
+          <label><i class = "calendar icon"/>今天日期：{{date}}</label>
+        </div>
+        <div class="field">
 
           <label><i class = "user icon"/>您的姓名/法名：
           <input type="text" name="" v-model = "name"/> </label> 
         
         </div>
         <div class="field">
-          <label><i class = "calendar icon"/>今天日期：</label>
-          <input type="text" name="" v-model = "date" placeholder="今天日期: 如2022/7/22" />
-        </div>
-        <div class="field">
           <label><i class = "comment icon"/>您今天念了幾聲佛號：</label>
           <input type="number" v-model = "number" />
+        </div>
+        <div class="field">
+          <label><i class = "comment icon"/>您念佛號的原因：</label>
+          <input type="number" v-model = "reason" />
         </div>
       </div>
 
@@ -126,6 +133,7 @@ export default {
       number: 0,
       p: '',
       msg: '',
+      reason: '',
       key: '',
       edit: '',
       read: 0,
@@ -163,6 +171,7 @@ export default {
       var o = {
         uid: this.uid || '123',
         n: this.name,
+        reason: this.reason,
         photoURL: this.photoURL || 'https://bestian.github.io/number/img/number.jpg',
         time: (new Date()).getTime(),
         date: this.date,
@@ -219,10 +228,16 @@ export default {
     if (localStorage.dismiss) {
       this.dismiss = localStorage.dismiss;
     }
+    if (localStorage.reason) {
+      this.reason = localStorage.reason;
+    }
   },
   watch: {
     name(newName) {
       localStorage.name = newName;
+    },
+    reason(newReason) {
+      localStorage.reason = newReason;
     },
     dismiss(newDismiss) {
       localStorage.dismiss = newDismiss;
