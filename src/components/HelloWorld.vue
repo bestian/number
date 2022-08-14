@@ -27,9 +27,17 @@
 
     <div class="ui segment container" v-show="!dismiss && step == 1">
       <h3 class ="ui header"> 使用說明</h3>
-      <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按「登錄佛號」按鈕即可</p>
-      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向</p>
-      <p>回向是針對疫情和法界與地球揚升到淨土，願大眾福慧增長，人人平安，超生淨土&nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
+      <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按「登錄佛號」按鈕即可。</p>
+      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向。</p>
+      <p>回向是針對疫情和法界與地球揚升到淨土，願大眾福慧增長，人人平安，超生淨土。</p>
+
+      <p>目前有<router-link class = "item" to ="/about"><i class ="plus icon"/>
+        <span class="fat-only">加總</span></router-link>的功能，您可以輸入關鍵字打自己的名字，查到所有的記錄和加總。</p>
+
+      <p>若您希望在其他佛寺使用類似的軟體，<br/>可以在<i class = "github icon"/>Github上，將本專案創建分叉版(Fork)，自行修改架站。</p>
+      <p>原始碼完全公開，請見此：<a href="https://github.com/bestian/number" target="_blank"><i class = "github icon"/>原始碼</a>
+
+      &nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
     </div>
 
     <form class="ui form container" v-show="step == 1">
@@ -48,8 +56,8 @@
           <input type="number" v-model = "number" />
         </div>
         <div class="field">
-          <label><i class = "comment icon"/>您念佛號的原因：</label>
-          <input type="number" v-model = "reason" />
+          <label><i class = "question icon"/>您念佛號的原因：</label>
+          <input type="text" v-model = "reason" />
         </div>
       </div>
 
@@ -96,8 +104,8 @@
           <input type="number" v-model = "number" />
         </div>
         <div class="field">
-          <label><i class = "comment icon"/>您念佛號的原因：</label>
-          <input type="number" v-model = "reason" />
+          <label><i class = "question icon"/>您念佛號的原因：</label>
+          <input type="text" v-model = "reason" />
         </div>
       </div>
 
