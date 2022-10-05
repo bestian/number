@@ -92,8 +92,8 @@ export default {
         ans[i + this.numbers.length] = this.oldNumbers[ks[i]]
       }
       var ans1 = []
-      for (var i = 0; i < Object.keys(ans).length; i++) {
-        ans1.push(ans[Object.keys(ans)[i]])
+      for (var j = 0; j < Object.keys(ans).length; j++) {
+        ans1.push(ans[Object.keys(ans)[j]])
       }
       return ans1
     },

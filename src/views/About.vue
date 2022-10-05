@@ -34,8 +34,6 @@
 
 <script>
 
-import { numbersRef } from '../firebase'
-
 export default {
   name: 'Sum',
   metaInfo: {
@@ -49,7 +47,7 @@ export default {
     list: function(u) {
       var key = this.key;
       var ans = this.numbers.filter(function(k) {
-        var re = /(.+)?[\/／\|丨\s]+/;
+        var re = /(.+)?[/／|丨\s]+/;
         let n = k.n.replace(re, '');
         let u2 = u.replace(re, '');
         re = /(.+)?[〈（](.+)[）〉].*/;
@@ -70,7 +68,7 @@ export default {
     count: function(u) {
       var ans = 0;
       for (var i = 0; i < this.numbers.length; i++) {
-        var re = /(.+)?[\/／\|丨\s]+/;
+        var re = /(.+)?[/／|丨\s]+/;
         let n = this.numbers[i].n.replace(re, '');
         u = u.replace(re, '');
         n = n.replace('丨','');
@@ -88,7 +86,7 @@ export default {
       var u = [];
       var key = this.key;
       for (var i = 0; i < this.numbers.length; i++) {
-        var re = /(.+?)[\/／\|丨\s]/;
+        var re = /(.+?)[/／|丨\s]/;
         let n = this.numbers[i].n.replace(re, '');
         re = /(.+)?[〈（](.+)[）〉].*/;
         n = n.replace(re, '$2');

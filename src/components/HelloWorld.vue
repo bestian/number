@@ -125,7 +125,6 @@
 <script>
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
-import { numbersRef } from '../firebase'
 
 export default {
   name: 'HelloWorld',
