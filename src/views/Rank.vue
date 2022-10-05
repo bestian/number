@@ -29,18 +29,13 @@
 
 <script>
 
-import { numbersRef } from '../firebase'
-
 export default {
   name: 'Rank',
   metaInfo: {
     title: '榮譽榜',
   },
-  firebase: {
-    numbers: numbersRef
-  },
+  props: ['numbers'],
   data: () => ({
-      numbers: [],
       key: '',
       dismiss2: false
   }),

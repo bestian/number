@@ -80,11 +80,11 @@
     </select>
 
     <div class="ui list container left aligned" v-show="mode == 'today' && step == 1">
-      <div class="item" v-for = "n in t(s(numbers))" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "n in t(s(numbers))" :key="n.n + n.date"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui list container left aligned" v-show="mode == 'all' && step == 1">
-      <div class="item" v-for = "n in s(numbers)" :key="n.n + n.date"> <img class="avatar" :src="n.photoURL" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "n in s(numbers)" :key="n.n + n.date"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui divider" v-show="step == 1"></div>
@@ -132,9 +132,7 @@ export default {
   metaInfo: {
     title: '歡迎',
   },
-  firebase: {
-    numbers: numbersRef
-  },
+  props: ['numbers'],
   data: () => ({
       step: 0,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
@@ -149,7 +147,6 @@ export default {
       user: '',
       name: '',
       token: '',
-      numbers: [],
       uid: '',
       provider: '',
       photoURL: '',
@@ -157,6 +154,12 @@ export default {
 
   }),
   methods: {
+    par (u) {
+      if (u == 'https://bestian.github.io/number/img/number.jpeg') {
+        u = 'https://bestian.github.io/number/img/number.jpg'
+      }
+      return u
+    },
     t:function (list) {
       var ans = list.filter(function(u) {
         return u.date == new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate();
@@ -164,6 +167,7 @@ export default {
       return ans;
     },
     s: function (list) {
+      // console.log(list)
       var l = list.slice().sort(function(a, b) {
         var arr1 = a.date.split('/');
         var arr2 = b.date.split('/');
@@ -181,7 +185,7 @@ export default {
         uid: this.uid || '123',
         n: this.name,
         reason: this.reason,
-        photoURL: this.photoURL || 'https://bestian.github.io/number/img/number.jpg',
+        photoURL: (this.photoURL && this.photoURL !== 'https://bestian.github.io/number/img/number.jpeg') ? this.photoURL : 'https://bestian.github.io/number/img/number.jpg',
         time: (new Date()).getTime(),
         date: this.date,
         number: this.number

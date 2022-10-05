@@ -41,11 +41,8 @@ export default {
   metaInfo: {
     title: '加總',
   },
-  firebase: {
-    numbers: numbersRef
-  },
+  props: ['numbers'],
   data: () => ({
-      numbers: [],
       key: '',
   }),
   methods: {

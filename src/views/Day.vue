@@ -19,18 +19,13 @@
 
 <script>
 
-import { numbersRef } from '../firebase'
-
 export default {
   name: 'Date',
   metaInfo: {
     title: '日期',
   },
-  firebase: {
-    numbers: numbersRef
-  },
+  props: ['numbers'],
   data: () => ({
-      numbers: [],
       key: '',
   }),
   methods: {
