@@ -9,6 +9,10 @@ import '../node_modules/semantic-ui-css/semantic.min.css'
 import { rtdbPlugin } from 'vuefire'
 import VueMeta from 'vue-meta'
 import VuePwaInstallPlugin from "vue-pwa-install"
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+Vue.use(VueAxios, axios)
 
 Vue.use(VuePwaInstallPlugin)
 
