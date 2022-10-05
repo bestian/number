@@ -1,10 +1,9 @@
 var webpack = require('webpack')
 module.exports = {
-    publicPath: process.env.NODE_ENV === 'production'
-    ? '/number/'
-    : '/',
-	lintOnSave: false,
-	configureWebpack: {
+    publicPath: '',
+    lintOnSave: false,
+
+    configureWebpack: {
 		plugins: [
 		new webpack.ProvidePlugin({
 			$: "jquery",
@@ -15,5 +14,9 @@ module.exports = {
 			Semantic: "semantic-ui-css",
 			"semantic-ui": "semantic-ui-css",
 		})]
-	}
+	},
+
+    pluginOptions: {
+      cordovaPath: 'src-cordova'
+    }
 }
