@@ -26,6 +26,16 @@
 
 
     <div class="ui segment container" v-show="!dismiss && step == 1">
+
+      <h2 class="ui header">每日百萬佛號活動</h2>
+
+      <div class="ui indicating green progress" :data-value="countTotal()" data-total="1000000" id="ex">
+        <div class="bar" :style="{width: countS() + '%'}">
+          <div class="progress"></div>
+        </div>
+        <div class="label">今日已達成：{{ countTotal() }} / 1000000</div>
+      </div>
+
       <h3 class ="ui header"> 使用說明</h3>
       <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按「登錄佛號」按鈕即可。</p>
       <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向。</p>
@@ -57,7 +67,7 @@
           <input type="number" v-model = "number" />
         </div>
         <div class="field">
-          <label><i class = "question icon"/>您念佛號的原因：</label>
+          <label><i class = "question icon"/>念佛號原因：</label>
           <input type="text" v-model = "reason" />
         </div>
       </div>
@@ -133,7 +143,7 @@ export default {
   },
   props: ['numbers'],
   data: () => ({
-      step: 0,
+      step: 1,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
       mode: 'today',
       number: 0,
@@ -153,13 +163,27 @@ export default {
 
   }),
   methods: {
+    countS () {
+      var ans = this.countTotal() / 1000000
+      console.log(ans)
+      return ans
+    },
+    countTotal () {
+      var ans = 0
+      for (var i = 0; i < this.t(this.numbers).length; i++) {
+        let n = this.t(this.numbers)[i]
+        ans += parseInt(n.number)
+      }
+      // console.log(ans)
+      return ans
+    },
     par (u) {
       if (u == 'https://bestian.github.io/number/img/number.jpeg') {
         u = 'https://bestian.github.io/number/img/number.jpg'
       }
       return u
     },
-    t:function (list) {
+    t: function (list) {
       var ans = list.filter(function(u) {
         return u.date == new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate();
       });
@@ -358,6 +382,11 @@ a {
   position: relative;
   top: 3.8em;
   z-index: -1;
+}
+
+#ex {
+  position: relative;
+  width: 100%;
 }
 
 </style>

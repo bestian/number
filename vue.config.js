@@ -15,8 +15,13 @@ module.exports = {
 			"semantic-ui": "semantic-ui-css",
 		})]
 	},
-
-    pluginOptions: {
-      cordovaPath: 'src-cordova'
+  pwa: {
+    workboxOptions: {
+      exclude: [/\.gitkeep/],
+      skipWaiting: true
     }
+  },
+  pluginOptions: {
+    cordovaPath: 'src-cordova'
+  }
 }
