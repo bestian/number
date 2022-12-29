@@ -34,7 +34,8 @@
 
 <script>
 import { BeforeInstallPromptEvent } from "vue-pwa-install";
-import { numbersRef } from './firebase'
+import { db } from './firebase'
+import { ref, onValue } from 'firebase/database'
 
 export default {
   name: 'App',
@@ -43,9 +44,6 @@ export default {
     title: '歡迎',
     // all titles will be injected into this template
     titleTemplate: '%s | 永明佛寺念佛號',
-  },
-  firebase: {
-    numbers: numbersRef
   },
   data() {
     return {
@@ -77,11 +75,17 @@ export default {
     })
   },
   mounted () {
+    const vm = this
     this.axios.get('./data/data-2022-10.json', {
         headers: {'Access-Control-Allow-Origin': '*'
       }}).then((data) => {
       // console.log(data.data)
       this.oldNumbers = data.data.numbers
+    })
+    onValue(ref(db, 'numbers'), (snapshot) => {
+      const data = snapshot.val()
+      // console.log(data)
+      vm.numbers = data
     })
   },
   methods: {
@@ -227,6 +231,10 @@ label, input {
   border-radius: 10px;
   -webkit-animation: jump 1s linear infinite;
   animation: jump 1s linear infinite;
+}
+
+.left.aligned {
+  text-align: left;
 }
 
 a, button {

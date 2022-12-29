@@ -1,8 +1,9 @@
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/database';
+import { initializeApp } from 'firebase/app';
+import { getDatabase } from 'firebase/database' 
+import { getAuth } from 'firebase/auth'
 
 // Initialize Firebase
-const app = firebase.initializeApp({
+const fb = initializeApp({
   apiKey: "AIzaSyDUWQtzKCOx4KmX1jwr906iIxXRsWYdiew",
   authDomain: "number-59440.firebaseapp.com",
   databaseURL: "https://number-59440-default-rtdb.firebaseio.com/",
@@ -13,5 +14,5 @@ const app = firebase.initializeApp({
   measurementId: "G-RNS3WHY858"
 })
 
-export const db = app.database()
-export const numbersRef = db.ref('numbers')
+export const db = getDatabase(fb)
+export const auth = getAuth(fb)

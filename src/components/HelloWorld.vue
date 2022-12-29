@@ -70,6 +70,11 @@
           <label><i class = "question icon"/>念佛號原因：</label>
           <input type="text" v-model = "reason" />
         </div>
+
+        <div class="field left aligned">
+          <input type="checkbox" v-model = "notJoin" />
+          <label>不加入百萬佛號統計請勾此</label>
+        </div>
       </div>
 
       <div class="field">
@@ -120,6 +125,11 @@
         </div>
       </div>
 
+      <div class="field left aligned">
+        <input type="checkbox" v-model = "notJoin" />
+        <label>不加入百萬佛號統計請勾此</label>
+      </div>
+
       <div class="field">
         <div class="ui buttons">
           <button class="ui huge green button ani tada" @click="submit()"><i class = "upload icon"/>登錄佛號</button>
@@ -133,8 +143,9 @@
 </template>
 
 <script>
-import firebase from 'firebase/compat/app';
-import 'firebase/compat/auth';
+import { auth, db } from '../firebase.js'
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import { ref, onValue, onDisconnect, set } from 'firebase/database'
 
 export default {
   name: 'HelloWorld',
@@ -147,6 +158,7 @@ export default {
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
       mode: 'today',
       number: 0,
+      notJoin: false,
       p: '',
       msg: '',
       reason: '',
@@ -172,9 +184,12 @@ export default {
       var ans = 0
       for (var i = 0; i < this.t(this.numbers).length; i++) {
         let n = this.t(this.numbers)[i]
-        ans += parseInt(n.number)
+        if (!n.notJoin) {
+          console.log(parseInt(n.number))
+          ans += parseInt(n.number)
+        }
       }
-      // console.log(ans)
+      console.log(ans)
       return ans
     },
     par (u) {
@@ -199,6 +214,13 @@ export default {
       })
       return l
     },
+    obj_to_list (obj) {
+      const ks = Object.keys(obj)
+      const list = ks.map(function (i) {
+        return obj[i]
+      })
+      return list
+    },
     submit: function () {
       if (!this.name) {
         alert('請輸入您的大名');
@@ -211,14 +233,17 @@ export default {
         photoURL: (this.photoURL && this.photoURL !== 'https://bestian.github.io/number/img/number.jpeg') ? this.photoURL : 'https://bestian.github.io/number/img/number.jpg',
         time: (new Date()).getTime(),
         date: this.date,
+        notJoin: this.notJoin,
         number: this.number
       }
+      const id = this.numbers.length
       if (this.number && parseInt(this.number) > 0) {
-        if (this.numbers.filter(function(u){
+        if (this.obj_to_list(this.numbers).filter(function(u){
           return u.n == o.n && u.date == o.date
         }).length == 0) {
-          this.$firebaseRefs.numbers.push(o);
+          this.numbers[id] = o;
           this.number = 0;
+          set(ref(db, 'numbers'), this.numbers)
           window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
         } else {
           window.alert('您今天已經登錄過了，請明天再來')
@@ -227,34 +252,35 @@ export default {
         window.alert('請輸入您今天念了幾聲佛號')
       }
     },
-    loginGoogle: function () {
-      var vm = this
-      var provider = new firebase.auth.GoogleAuthProvider()
-      firebase.auth().signInWithPopup(provider).then(function (result) {
+    loginGoogle () {
+      const vm = this
+      if (this.isInApp) {
+        window.alert('本系統不支援facebook, line等app內部瀏覽，請用一般瀏覽器開啟，方可登入，謝謝')
+      } else {
+        signInWithPopup(auth, provider).then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
-        vm.provider = 'google'
-        vm.token = result.credential.accessToken
+        const credential = GoogleAuthProvider.credentialFromResult(result)
+        const token = credential.accessToken
         // The signed-in user info.
-        vm.uid = result.user.uid
-        console.log(vm.uid)
-        vm.user = result.user
-        vm.name = localStorage.name || vm.user.displayName
-        console.log(vm.user)
-        console.log(decodeURI(result.user.photoURL))
-        decodeURI(result.user.photoURL)
-        vm.photoURL = decodeURI(result.user.photoURL)
-        window.alert('Google 登入成功')
-        // ...
-      }).catch(function (error) {
+        const user = result.user
+        vm.user = user
+        vm.email = user.providerData[0].email
+        vm.token = token
+        vm.uid = user.uid
+        vm.photoURL = decodeURI(user.photoURL)
+      }).catch((error) => {
         // Handle Errors here.
-        var errorCode = error.code
-        var errorMessage = error.message
+        const errorCode = error.code;
+        const errorMessage = error.message;
         // The email of the user's account used.
-        var email = error.email
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential
-        console.log(errorCode + errorMessage + email + credential)
-      })
+        // const email = error.customData.email;
+        // The AuthCredential type that was used.
+        // const credential = GoogleAuthProvider.credentialFromError(error);
+        console.log(errorCode)
+        console.log(errorMessage)
+      });
+      // signInWithRedirect(auth, provider)
+      }
     }
   },
   mounted() {
