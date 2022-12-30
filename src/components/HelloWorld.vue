@@ -27,19 +27,19 @@
 
     <div class="ui segment container" v-show="!dismiss && step == 1">
 
-      <h2 class="ui header">每日百萬佛號活動</h2>
+      <h2 class="ui header">千萬佛號活動</h2>
 
-      <div class="ui indicating green progress" :data-value="countTotal()" data-total="1000000" id="ex">
+      <div class="ui indicating green progress" :data-value="countTotal()" data-total="10000000" id="ex">
         <div class="bar" :style="{width: countS() + '%'}">
           <div class="progress"></div>
         </div>
-        <div class="label">今日已達成：{{ countTotal() }} / 1000000</div>
+        <div class="label">已達成：{{ countTotal() }} / 1000000</div>
       </div>
 
       <h3 class ="ui header"> 使用說明</h3>
+      <p>白淨家人佛安<br/>為世界千萬和平祈福！集結人們善念共振存儲無形富貴財富！</p>
       <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按「登錄佛號」按鈕即可。</p>
       <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向。</p>
-      <p>白淨家人佛安<br/>為世界千萬和平祈福！集結人們善念共振存儲無形富貴財富！</p>
       <p>永明佛寺地址：台東縣太麻里鄉華源村南北坑58-1號。永明佛寺電話：<a herf="tel:0937280910">0937280910</a>、<a herf="tel:0982029814">0982029814</a></p>
 
       <p>目前有<router-link class = "item" to ="/about"><i class ="plus icon"/>
@@ -176,7 +176,7 @@ export default {
   }),
   methods: {
     countS () {
-      var ans = this.countTotal() / 1000000
+      var ans = this.countTotal() / 10000000
       console.log(ans)
       return ans
     },
@@ -184,8 +184,12 @@ export default {
       var ans = 0
       for (var i = 0; i < this.t(this.numbers).length; i++) {
         let n = this.t(this.numbers)[i]
-        if (!n.notJoin) {
-          console.log(parseInt(n.number))
+        if (!n.notJoin &&
+            (
+              (new Date(n.time).getFullYear() === 2022 && new Date(n.time).getMonth() == 11) || (new Date(n.time).getFullYear() > 2022) 
+              )
+            ) {
+          // console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
       }
