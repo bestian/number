@@ -33,7 +33,7 @@
         <div class="bar" :style="{width: countS() + '%'}">
           <div class="progress"></div>
         </div>
-        <div class="label">已達成：{{ countTotal() }} / 1000000</div>
+        <div class="label">今日已達成：{{ countTotal() }} / 10000000</div>
       </div>
 
       <h3 class ="ui header"> 使用說明</h3>
@@ -186,9 +186,8 @@ export default {
         let n = this.t(this.numbers)[i]
         if (!n.notJoin &&
             (
-              (new Date(n.time).getFullYear() === 2022 && new Date(n.time).getMonth() == 11) || (new Date(n.time).getFullYear() > 2022) 
-              )
-            ) {
+              new Date(n.time).getFullYear() === new Date().getFullYear() && new Date(n.time).getMonth() === new Date().getMonth() && new Date(n.time).getDate() === new Date().getDate()
+            )) {
           // console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
