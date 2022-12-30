@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <router-view :numbers = "getNumbers()"/>
+    <router-view :numbers = "getNumbers()" :myS = "myS" :myTotal = "myTotal"/>
   </div>
 </template>
 
@@ -50,6 +50,28 @@ export default {
       oldNumbers: [],
       numbers: [],
       deferredPrompt: BeforeInstallPromptEvent
+    }
+  },
+  computed: {
+    myS () {
+      var ans = this.countTotal / 10000000
+      console.log(ans)
+      return ans
+    },
+    myTotal () {
+      var ans = 0
+      for (var i = 0; i < this.numbers.length; i++) {
+        let n = this.numbers[i]
+        if (!n.notJoin &&
+            (
+              new Date(n.time).getFullYear() === new Date().getFullYear() && new Date(n.time).getMonth() === new Date().getMonth() && new Date(n.time).getDate() === new Date().getDate()
+            )) {
+          // console.log(parseInt(n.number))
+          ans += parseInt(n.number)
+        }
+      }
+      console.log(ans)
+      return ans
     }
   },
   created() {
@@ -115,7 +137,6 @@ export default {
           } else {
             console.log("User dismissed the install prompt");
           }
-
           this.deferredPrompt = null;
         });
       }

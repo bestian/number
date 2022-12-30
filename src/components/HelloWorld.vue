@@ -29,11 +29,11 @@
 
       <h2 class="ui header">千萬佛號活動</h2>
 
-      <div class="ui indicating green progress" :data-value="countTotal()" data-total="10000000" id="ex">
-        <div class="bar" :style="{width: countS() + '%'}">
+      <div class="ui indicating green progress" :data-value="myTotal" data-total="10000000" id="ex">
+        <div class="bar" :style="{width: myS + '%'}">
           <div class="progress"></div>
         </div>
-        <div class="label">今日已達成：{{ countTotal() }} / 10000000</div>
+        <div class="label">今日已達成：{{ myTotal }} / 10000000</div>
       </div>
 
       <h3 class ="ui header"> 使用說明</h3>
@@ -81,7 +81,10 @@
         <div class="ui buttons">
           <button class="ui huge green button ani tada" @click="submit()"><i class = "upload icon"/>登錄佛號</button>
           <div class="or"></div>
-          <button class = "ui huge orange button ani tada" @click ="loginGoogle()"><i class = "google icon"/>google登入</button>
+          <button class = "ui huge orange button ani tada" @click ="loginGoogle()" v-if="!user"><i class = "google icon"/>google登入</button>
+          <button class = "ui huge blue button ani tada" @click ="logout()" v-else>
+            <img id = "r" :src="photoURL" />
+            <i class = "sign-out icon"/>登出</button>
         </div>
       </div>
     </form>
@@ -134,7 +137,10 @@
         <div class="ui buttons">
           <button class="ui huge green button ani tada" @click="submit()"><i class = "upload icon"/>登錄佛號</button>
           <div class="or"></div>
-          <button class = "ui huge orange button ani tada" @click ="loginGoogle()"><i class = "google icon"/>google登入</button>
+          <button class = "ui huge orange button ani tada" @click ="loginGoogle()" v-if="!user"><i class = "google icon"/>google登入</button>
+          <button class = "ui huge blue button ani tada" @click ="logout()" v-else>
+            <img id = "r" :src="photoURL" />
+            <i class = "sign-out icon"/>登出</button>
         </div>
       </div>
     </form>
@@ -147,12 +153,15 @@ import { auth, db } from '../firebase.js'
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { ref, onValue, onDisconnect, set } from 'firebase/database'
 
+const provider = new GoogleAuthProvider()
+provider.addScope('https://www.googleapis.com/auth/userinfo.email')
+
 export default {
   name: 'HelloWorld',
   metaInfo: {
     title: '歡迎',
   },
-  props: ['numbers'],
+  props: ['numbers', 'myS', 'myTotal'],
   data: () => ({
       step: 1,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
@@ -171,30 +180,9 @@ export default {
       uid: '',
       provider: '',
       photoURL: '',
-      dismiss: false
-
+      dismiss: false,
   }),
   methods: {
-    countS () {
-      var ans = this.countTotal() / 10000000
-      console.log(ans)
-      return ans
-    },
-    countTotal () {
-      var ans = 0
-      for (var i = 0; i < this.t(this.numbers).length; i++) {
-        let n = this.t(this.numbers)[i]
-        if (!n.notJoin &&
-            (
-              new Date(n.time).getFullYear() === new Date().getFullYear() && new Date(n.time).getMonth() === new Date().getMonth() && new Date(n.time).getDate() === new Date().getDate()
-            )) {
-          // console.log(parseInt(n.number))
-          ans += parseInt(n.number)
-        }
-      }
-      console.log(ans)
-      return ans
-    },
     par (u) {
       if (u == 'https://bestian.github.io/number/img/number.jpeg') {
         u = 'https://bestian.github.io/number/img/number.jpg'
@@ -248,12 +236,21 @@ export default {
           this.number = 0;
           set(ref(db, 'numbers'), this.numbers)
           window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
+          localStorage.name = this.name;
         } else {
           window.alert('您今天已經登錄過了，請明天再來')
         }
       } else {
         window.alert('請輸入您今天念了幾聲佛號')
       }
+    },
+    logout () {
+      const vm = this
+      auth.signOut().then(function() {
+        vm.user = null
+        vm.uid = null
+        vm.photoURL = null
+      })
     },
     loginGoogle () {
       const vm = this
@@ -298,9 +295,6 @@ export default {
     }
   },
   watch: {
-    name(newName) {
-      localStorage.name = newName;
-    },
     reason(newReason) {
       localStorage.reason = newReason;
     },
@@ -411,6 +405,12 @@ a {
   position: relative;
   top: 3.8em;
   z-index: -1;
+}
+
+#r {
+  height: 2em;
+  width: 2em;
+  border-radius: 50%;
 }
 
 #ex {
