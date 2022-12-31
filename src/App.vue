@@ -54,7 +54,8 @@ export default {
   },
   computed: {
     myS () {
-      var ans = (this.countTotal || 0) / 10000000
+      // var ans = (this.countTotal || 0) / 10000000
+      const ans = (this.myTotal || 0) * 100 / 10000000
       console.log(ans)
       return ans
     },
@@ -66,7 +67,7 @@ export default {
             (
               new Date(n.time).getFullYear() === new Date().getFullYear() && new Date(n.time).getMonth() === new Date().getMonth() && new Date(n.time).getDate() === new Date().getDate()
             )) {
-          console.log(parseInt(n.number))
+          // console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
       }
@@ -79,9 +80,9 @@ export default {
         let n = this.numbers[i]
         if (!n.notJoin &&
             (
-              new Date(n.time).getFullYear() === 2022 && new Date(n.time).getMonth() == 11
+              new Date(n.time).getFullYear() === 2022 && new Date(n.time).getMonth() == 11 && new Date(n.time).getDate() >= 25
             ) || ( new Date(n.time).getFullYear() > 2022)) {
-          console.log(parseInt(n.number))
+          // console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
       }
