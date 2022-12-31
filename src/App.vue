@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <router-view :numbers = "getNumbers()" :myS = "myS" :myTotal = "myTotal"/>
+    <router-view :numbers = "getNumbers()" :myS = "myS" :myTotal = "myTotal" :myToDay="myToDay"/>
   </div>
 </template>
 
@@ -54,7 +54,22 @@ export default {
   },
   computed: {
     myS () {
-      var ans = this.countTotal / 10000000
+      var ans = (this.countTotal || 0) / 10000000
+      console.log(ans)
+      return ans
+    },
+    myToDay () {
+      var ans = 0
+      for (var i = 0; i < this.numbers.length; i++) {
+        let n = this.numbers[i]
+        if (!n.notJoin &&
+            (
+              new Date(n.time).getFullYear() === new Date().getFullYear() && new Date(n.time).getMonth() === new Date().getMonth() && new Date(n.time).getDate() === new Date().getDate()
+            )) {
+          console.log(parseInt(n.number))
+          ans += parseInt(n.number)
+        }
+      }
       console.log(ans)
       return ans
     },
@@ -64,9 +79,9 @@ export default {
         let n = this.numbers[i]
         if (!n.notJoin &&
             (
-              new Date(n.time).getFullYear() === new Date().getFullYear() && new Date(n.time).getMonth() === new Date().getMonth() && new Date(n.time).getDate() === new Date().getDate()
-            )) {
-          // console.log(parseInt(n.number))
+              new Date(n.time).getFullYear() === 2022 && new Date(n.time).getMonth() == 11
+            ) || ( new Date(n.time).getFullYear() > 2022)) {
+          console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
       }

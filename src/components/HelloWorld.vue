@@ -33,8 +33,16 @@
         <div class="bar" :style="{width: myS + '%'}">
           <div class="progress"></div>
         </div>
-        <div class="label">今日已達成：{{ myTotal }} / 10000000</div>
+        <div class="label">已達成：{{ myTotal }} / 10000000</div>
       </div>
+
+      <div class="label">本日加總：{{ myToDay }}</div>
+
+      <h4>
+        永明佛寺點亮心燈光明燈迴向表：
+        <a href="https://forms.gle/MmQRv9SCCk6XxK7VA" target="_blank" rel="noopener noreferrer">
+        https://forms.gle/MmQRv9SCCk6XxK7VA</a>
+      </h4>
 
       <h3 class ="ui header"> 使用說明</h3>
       <p>白淨家人佛安<br/>為世界千萬和平祈福！集結人們善念共振存儲無形富貴財富！</p>
@@ -73,7 +81,7 @@
 
         <div class="field left aligned">
           <input type="checkbox" v-model = "notJoin" />
-          <label>不加入百萬佛號統計請勾此</label>
+          <label>不加入千萬佛號統計請勾此</label>
         </div>
       </div>
 
@@ -161,7 +169,7 @@ export default {
   metaInfo: {
     title: '歡迎',
   },
-  props: ['numbers', 'myS', 'myTotal'],
+  props: ['numbers', 'myS', 'myTotal', 'myToDay'],
   data: () => ({
       step: 1,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
