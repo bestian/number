@@ -29,14 +29,18 @@
 
       <h2 class="ui header">千萬佛號活動</h2>
 
-      <div class="ui indicating green progress" :data-value="myTotal" data-total="10000000" id="ex">
+      <div class="ui active inverted dimmer" v-show="!myTotal">
+        <div class="ui text loader">資料載入中...</div>
+      </div>
+
+      <div v-show="myTotal" class="ui indicating green progress" :data-value="myTotal" data-total="10000000" id="ex">
         <div class="bar" :style="{width: myS + '%'}">
           <div class="progress"></div>
         </div>
         <div class="label">已達成：{{ myTotal }} / 10000000</div>
       </div>
 
-      <div class="label">本日加總：{{ myToDay }}</div>
+      <div v-show="myToDay" class="label">本日加總：{{ myToDay }}</div>
 
       <h4>
         永明佛寺點亮心燈光明燈迴向表：
