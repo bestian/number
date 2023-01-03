@@ -63,7 +63,7 @@
       &nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
     </div>
 
-    <form class="ui form container" v-show="step == 1">
+    <form class="ui form container" v-show="step == 1 && myTotal">
       <div class="fields">
         <div class="field">
           <label><i class = "calendar icon"/>今天日期：{{date}}</label>
@@ -91,7 +91,7 @@
 
       <div class="field">
         <div class="ui buttons">
-          <button class="ui huge green button ani tada" @click="submit()"><i class = "upload icon"/>登錄佛號</button>
+          <button class="ui huge green button ani tada" @click="addNumber()"><i class = "upload icon"/>登錄佛號</button>
           <div class="or"></div>
           <button class = "ui huge orange button ani tada" @click ="loginGoogle()" v-if="!user"><i class = "google icon"/>google登入</button>
           <button class = "ui huge blue button ani tada" @click ="logout()" v-else>
@@ -119,7 +119,7 @@
 
     <div class="ui divider" v-show="step == 1"></div>
     
-    <form class="ui form container" v-show="numbers[0] && step == 1">
+    <form class="ui form container" v-show="numbers[0] && step == 1 && myTotal">
       <div class="fields">
         <div class="field">
           <label><i class = "calendar icon"/>今天日期：{{date}}</label>
@@ -147,7 +147,7 @@
 
       <div class="field">
         <div class="ui buttons">
-          <button class="ui huge green button ani tada" @click="submit()"><i class = "upload icon"/>登錄佛號</button>
+          <button class="ui huge green button ani tada" @click="addNumber()"><i class = "upload icon"/>登錄佛號</button>
           <div class="or"></div>
           <button class = "ui huge orange button ani tada" @click ="loginGoogle()" v-if="!user"><i class = "google icon"/>google登入</button>
           <button class = "ui huge blue button ani tada" @click ="logout()" v-else>
@@ -163,7 +163,7 @@
 <script>
 import { auth, db } from '../firebase.js'
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { ref, onValue, onDisconnect, set } from 'firebase/database'
+import { ref, onValue, set } from 'firebase/database'
 
 const provider = new GoogleAuthProvider()
 provider.addScope('https://www.googleapis.com/auth/userinfo.email')
@@ -209,6 +209,7 @@ export default {
     },
     s: function (list) {
       // console.log(list)
+      list = list || []
       var l = list.slice().sort(function(a, b) {
         var arr1 = a.date.split('/');
         var arr2 = b.date.split('/');
@@ -224,7 +225,9 @@ export default {
       })
       return list
     },
-    submit: function () {
+    addNumber () {
+      const vm = this
+      var arr = [ ...this.numbers]
       if (!this.name) {
         alert('請輸入您的大名');
         return;
@@ -239,18 +242,20 @@ export default {
         notJoin: this.notJoin,
         number: this.number
       }
-      const id = this.numbers.length
       if (this.number && parseInt(this.number) > 0) {
-        if (this.obj_to_list(this.numbers).filter(function(u){
-          return u.n == o.n && u.date == o.date
-        }).length == 0) {
-          this.numbers[id] = o;
+
+        if (this.numbers.filter(function (o) {
+          return o.n === vm.name && o.date === vm.date
+        }).length === 0) {
+          arr.push(o)
+          console.log(arr)
           this.number = 0;
-          set(ref(db, 'numbers'), this.numbers)
-          window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
-          localStorage.name = this.name;
+          set(ref(db, 'numbers'), arr).then(() => {
+            window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
+            localStorage.name = this.name;
+          })
         } else {
-          window.alert('您今天已經登錄過了，請明天再來')
+          window.alert('您今天已登入過，請明天再來')
         }
       } else {
         window.alert('請輸入您今天念了幾聲佛號')
@@ -288,8 +293,8 @@ export default {
         // const email = error.customData.email;
         // The AuthCredential type that was used.
         // const credential = GoogleAuthProvider.credentialFromError(error);
-        console.log(errorCode)
-        console.log(errorMessage)
+        // console.log(errorCode)
+        // console.log(errorMessage)
       });
       // signInWithRedirect(auth, provider)
       }

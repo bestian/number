@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <router-view :numbers = "getNumbers()" :myS = "myS" :myTotal = "myTotal" :myToDay="myToDay"/>
+    <router-view :numbers="numbers" :myS = "myS" :myTotal = "myTotal" :myToDay="myToDay"/>
   </div>
 </template>
 
@@ -129,15 +129,16 @@ export default {
   methods: {
     getNumbers () {
       var ans = { ...this.numbers }
-      /*const ks = Object.keys(this.oldNumbers)
+      /* const ks = Object.keys(this.oldNumbers)
       for (var i = 0; i < ks.length; i++) {
         ans[i + this.numbers.length] = this.oldNumbers[ks[i]]
-      } */
+      }
       var ans1 = []
       for (var j = 0; j < Object.keys(ans).length; j++) {
         ans1.push(ans[Object.keys(ans)[j]])
-      }
-      return ans1
+      } */
+      // console.log(ans1)
+      return ans
     },
     install() {
       console.log(this.deferredPrompt)
