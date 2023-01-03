@@ -142,7 +142,7 @@
 
       <div class="field left aligned">
         <input type="checkbox" v-model = "notJoin" />
-        <label>不加入百萬佛號統計請勾此</label>
+        <label>不加入千萬佛號統計請勾此</label>
       </div>
 
       <div class="field">
