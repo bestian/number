@@ -4,10 +4,10 @@
       <router-link class = "item" to ="/">
         <i class ="home icon"/>
         <span class="fat-only">首頁</span></router-link>
-      <router-link class = "item" to ="/about"><i class ="plus icon"/>
+      <!-- <router-link class = "item" to ="/about"><i class ="plus icon"/>
         <span class="fat-only">加總</span></router-link>
       <router-link class = "item" to ="/day"><i class ="calendar icon"/>
-        <span class="fat-only">每日</span></router-link>
+        <span class="fat-only">每日</span></router-link> -->
       <router-link class = "item" to ="/rank"><i class ="chess king
  icon"/>
         <span class="fat-only">榮譽</span></router-link>
@@ -123,10 +123,17 @@ export default {
     onValue(ref(db, 'numbers'), (snapshot) => {
       const data = snapshot.val()
       // console.log(data)
-      vm.numbers = data
+      vm.numbers = vm.obj_to_list(data)
     })
   },
   methods: {
+    obj_to_list (obj) {
+      const ks = Object.keys(obj)
+      const list = ks.map(function (i) {
+        return obj[i]
+      })
+      return list
+    },
     getNumbers () {
       var ans = { ...this.numbers }
       /* const ks = Object.keys(this.oldNumbers)
