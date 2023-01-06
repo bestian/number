@@ -25,7 +25,7 @@
     </div>
 
 
-    <div class="ui segment container" v-show="!dismiss && step == 1">
+    <div class="ui segment container" v-show="step == 1">
 
       <h2 class="ui header">千萬佛號活動</h2>
 
@@ -42,25 +42,30 @@
 
       <div v-show="myToDay" class="label">本日加總：{{ myToDay }}</div>
 
-      <h4>
+      <h2 class="ui header">
         永明佛寺點亮心燈光明燈迴向表：
+      <br/>
         <a href="https://forms.gle/MmQRv9SCCk6XxK7VA" target="_blank" rel="noopener noreferrer">
         https://forms.gle/MmQRv9SCCk6XxK7VA</a>
-      </h4>
+      <br/>
+        永明佛寺為您守護一輩子光明心燈
+      </h2>
 
-      <h3 class ="ui header"> 使用說明</h3>
-      <p>白淨家人佛安<br/>為世界千萬和平祈福！集結人們善念共振存儲無形富貴財富！</p>
-      <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按「登錄佛號」按鈕即可。</p>
-      <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向。</p>
-      <p>永明佛寺地址：台東縣太麻里鄉華源村南北坑58-1號。永明佛寺電話：<a herf="tel:0937280910">0937280910</a>、<a herf="tel:0982029814">0982029814</a></p>
+      <div v-show="!dismiss">
+        <h3 class ="ui header"> 使用說明</h3>
+        <p>白淨家人佛安<br/>為世界千萬和平祈福！集結人們善念共振存儲無形富貴財富！</p>
+        <p>請在網站上登錄您的名字和今天念了幾聲佛號，再按「登錄佛號」按鈕即可。</p>
+        <p>每個名字每天只能登錄一次，請在晚上7:30前登錄以便回向，永明佛寺會在晚上7:30-8:00間回向。</p>
+        <p>永明佛寺地址：台東縣太麻里鄉華源村南北坑58-1號。永明佛寺電話：<a herf="tel:0937280910">0937280910</a>、<a herf="tel:0982029814">0982029814</a></p>
 
-      <p>目前有<router-link class = "item" to ="/about"><i class ="plus icon"/>
-        <span class="fat-only">加總</span></router-link>的功能，您可以輸入關鍵字打自己的名字，查到所有的記錄和加總。</p>
+        <p>目前有<router-link class = "item" to ="/about"><i class ="plus icon"/>
+          <span class="fat-only">加總</span></router-link>的功能，您可以輸入關鍵字打自己的名字，查到所有的記錄和加總。</p>
 
-      <p>若您希望在其他佛寺使用類似的軟體，<br/>可以在<i class = "github icon"/>Github上，將本專案創建分叉版(Fork)，自行修改架站。</p>
-      <p>原始碼完全公開，請見此：<a href="https://github.com/bestian/number" target="_blank"><i class = "github icon"/>原始碼</a>
+        <p>若您希望在其他佛寺使用類似的軟體，<br/>可以在<i class = "github icon"/>Github上，將本專案創建分叉版(Fork)，自行修改架站。</p>
+        <p>原始碼完全公開，請見此：<a href="https://github.com/bestian/number" target="_blank"><i class = "github icon"/>原始碼</a>
 
-      &nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
+        &nbsp;&nbsp;&nbsp;&nbsp;<a class="ui tiny gray button" @click="dismiss = true">不再顯示提示</a></p>
+      </div>
     </div>
 
     <form class="ui form container" v-show="step == 1 && myTotal">
@@ -83,10 +88,10 @@
           <input type="text" v-model = "reason" />
         </div>
 
-        <div class="field left aligned">
+        <!-- <div class="field left aligned">
           <input type="checkbox" v-model = "notJoin" />
           <label>不加入千萬佛號統計請勾此</label>
-        </div>
+        </div> -->
       </div>
 
       <div class="field">
@@ -140,10 +145,10 @@
         </div>
       </div>
 
-      <div class="field left aligned">
+      <!-- <div class="field left aligned">
         <input type="checkbox" v-model = "notJoin" />
         <label>不加入千萬佛號統計請勾此</label>
-      </div>
+      </div> -->
 
       <div class="field">
         <div class="ui buttons">
