@@ -42,14 +42,21 @@
 
       <div v-show="myToDay" class="label">本日加總：{{ myToDay }}</div>
 
-      <h2 class="ui header">
+      <h4 class="ui header">
+        2023 永明佛寺行腳行程表
+      <br/>
+        <a href="https://docs.google.com/spreadsheets/d/19pJLqZK6HpKzg1W9rxkezJ2_g4BM5-FspMF3qZaLPQI/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+        行程表請按此</a>
+      </h4>
+
+      <h4 class="ui header">
         永明佛寺點亮心燈光明燈迴向表：
       <br/>
         <a href="https://forms.gle/MmQRv9SCCk6XxK7VA" target="_blank" rel="noopener noreferrer">
         https://forms.gle/MmQRv9SCCk6XxK7VA</a>
       <br/>
         永明佛寺為您守護一輩子光明心燈
-      </h2>
+      </h4>
 
       <div v-show="!dismiss">
         <h3 class ="ui header"> 使用說明</h3>
@@ -168,7 +175,7 @@
 <script>
 import { auth, db } from '../firebase.js'
 import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
-import { ref, onValue, set } from 'firebase/database'
+import { ref, set } from 'firebase/database'
 
 const provider = new GoogleAuthProvider()
 provider.addScope('https://www.googleapis.com/auth/userinfo.email')
