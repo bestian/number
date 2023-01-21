@@ -54,7 +54,7 @@
         https://forms.gle/MmQRv9SCCk6XxK7VA</a>
       <br/>
         永明佛寺為您守護一輩子光明心燈
-      </h4>
+      </h2>
 
       <div v-show="!dismiss">
         <h3 class ="ui header"> 使用說明</h3>
@@ -303,21 +303,14 @@ export default {
         // const email = error.customData.email;
         // The AuthCredential type that was used.
         // const credential = GoogleAuthProvider.credentialFromError(error);
-        console.log(errorCode)
-        console.log(errorMessage)
+        // console.log(errorCode)
+        // console.log(errorMessage)
       });
       // signInWithRedirect(auth, provider)
       }
     }
   },
   mounted() {
-    const vm = this
-    onValue(ref(db, 'numbers'), (snapshot) => {
-      const data = snapshot.val()
-      console.log(data)
-      console.log('get numbers')
-      vm.numbers = data
-    });
     if (localStorage.name) {
       this.name = localStorage.name;
     }
