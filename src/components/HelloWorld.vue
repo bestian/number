@@ -42,14 +42,9 @@
 
       <div v-show="myToDay" class="label">本日加總：{{ myToDay }}</div>
 
-      <h3 class="ui header">
-        2023 永明佛寺行腳路線
-        <br/>
-        <a href="https://docs.google.com/spreadsheets/d/19pJLqZK6HpKzg1W9rxkezJ2_g4BM5-FspMF3qZaLPQI/edit#gid=0" target="_blank" rel="noopener noreferrer">共用表單連結請按此</a>
-      </h3>
-      <h4 class="ui header">
+      <h2 class="ui header">
         永明佛寺點亮心燈光明燈迴向表：
-        <br/>
+      <br/>
         <a href="https://forms.gle/MmQRv9SCCk6XxK7VA" target="_blank" rel="noopener noreferrer">
         https://forms.gle/MmQRv9SCCk6XxK7VA</a>
       <br/>
