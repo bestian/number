@@ -52,8 +52,7 @@
       <h4 class="ui header">
         永明佛寺點亮心燈光明燈迴向表：
       <br/>
-        <a href="https://forms.gle/MmQRv9SCCk6XxK7VA" target="_blank" rel="noopener noreferrer">
-        https://forms.gle/MmQRv9SCCk6XxK7VA</a>
+        <a href="https://forms.gle/zeuANUaxF5AWhrBH" target="_blank" rel="noopener noreferrer">https://forms.gle/zeuANUaxF5AWhrBH</a>
       <br/>
         永明佛寺為您守護一輩子光明心燈
       </h4>
