@@ -6,15 +6,16 @@ import './registerServiceWorker'
 import router from './router'
 import { rtdbPlugin } from 'vuefire'
 import VueMeta from 'vue-meta'
-import VuePwaInstallPlugin from 'vue-pwa-install'
+import VuePwaInstallPlugin from "vue-pwa-install"
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-import VueSocialSharing from 'vue-social-sharing'
 
 Vue.use(VueAxios, axios)
-Vue.use(VueSocialSharing)
+
 Vue.use(VuePwaInstallPlugin)
+
 Vue.use(VueMeta)
+
 Vue.use(rtdbPlugin)
 
 import SuiVue from 'semantic-ui-vue'

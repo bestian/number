@@ -24,14 +24,11 @@
         <a class = "item fat-only" href="https://sites.google.com/view/innerpurelight/%E9%A6%96%E9%A0%81" target="_blank"><i class ="globe icon"/>台東永明佛寺</a>
         <a class = "item fat-only" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
         <div class="wide item">
-          <ShareNetwork class="ui blue button" network="facebook" url="https://bestian.github.io/number/" description="念佛號" quote="一個統計念佛號的小程式，您可以每天登錄您念的佛號數">
-            <i class="ui share icon"/>
-            | 分享
-          </ShareNetwork>
+          <iframe src="https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fbestian.github.io%2Fnumber%2F%23%2F&layout=button_count&size=small&appId=485195848253155&width=71&height=20" width="100" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
         </div>
       </div>
     </div>
-    <router-view :numbers="numbers" :myTotal = "myTotal" :myToDay="myToDay"/>
+    <router-view :numbers="numbers" :myS = "myS" :myTotal = "myTotal" :myToDay="myToDay"/>
   </div>
 </template>
 
@@ -56,6 +53,12 @@ export default {
     }
   },
   computed: {
+    myS () {
+      // var ans = (this.countTotal || 0) / 10000000
+      const ans = (this.myTotal || 0) * 100 / 10000000
+      console.log(ans)
+      return ans
+    },
     myToDay () {
       var ans = 0
       for (var i = 0; i < this.numbers.length; i++) {
@@ -68,22 +71,22 @@ export default {
           ans += parseInt(n.number)
         }
       }
-      // console.log(ans)
+      console.log(ans)
       return ans
     },
     myTotal () {
       var ans = 0
       for (var i = 0; i < this.numbers.length; i++) {
         let n = this.numbers[i]
-        if (
+        if (!n.notJoin &&
             (
-              new Date(n.time).getFullYear() == 2023 && new Date(n.time).getMonth() >= 2
-            ) || ( new Date(n.time).getFullYear() > 2023)) {
+              new Date(n.time).getFullYear() === 2022 && new Date(n.time).getMonth() == 11 && new Date(n.time).getDate() >= 25
+            ) || ( new Date(n.time).getFullYear() > 2022)) {
           // console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
       }
-      // console.log(ans)
+      console.log(ans)
       return ans
     }
   },
@@ -119,9 +122,8 @@ export default {
     })
     onValue(ref(db, 'numbers'), (snapshot) => {
       const data = snapshot.val()
+      // console.log(data)
       vm.numbers = vm.obj_to_list(data)
-      console.log('get numbers')
-      vm.$forceUpdate()
     })
   },
   methods: {
