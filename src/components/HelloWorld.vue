@@ -27,7 +27,7 @@
 
     <div class="ui segment container" v-show="step == 1">
 
-      <h2 class="ui header">千萬佛號活動</h2>
+      <h2 class="ui header">2023春李千萬佛號活動</h2>
 
       <div class="ui active inverted dimmer" v-show="!myTotal">
         <div class="ui text loader">資料載入中...</div>
@@ -40,7 +40,7 @@
         <div class="label">已達成：{{ myTotal }} / 10000000</div>
       </div>
 
-      <div v-show="myToDay" class="label">本日加總：{{ myToDay }}</div>
+      <div v-show="myToDay" class="label">本日加總：{{ myToDay }}聲佛號</div>
 
       <h4 class="ui header">
         2023 永明佛寺行腳行程表
@@ -121,11 +121,11 @@
     </select>
 
     <div class="ui list container left aligned" v-show="mode == 'today' && step == 1">
-      <div class="item" v-for = "n in t(s(numbers))" :key="n.n + n.date"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "(n, k) in t(s(numbers))" :key="k"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui list container left aligned" v-show="mode == 'all' && step == 1">
-      <div class="item" v-for = "n in s(numbers)" :key="n.n + n.date"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "(n, j) in s(numbers)" :key="j"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui divider" v-show="step == 1"></div>
@@ -158,10 +158,10 @@
 
       <div class="field">
         <div class="ui buttons">
-          <button class="ui huge green button ani tada" @click="addNumber()"><i class = "upload icon"/>登錄佛號</button>
+          <button type="button" class="ui huge green button ani tada" @click="addNumber()"><i class = "upload icon"/>登錄佛號</button>
           <div class="or"></div>
-          <button class = "ui huge orange button ani tada" @click ="loginGoogle()" v-if="!user"><i class = "google icon"/>google登入</button>
-          <button class = "ui huge blue button ani tada" @click ="logout()" v-else>
+          <button type="button" class = "ui huge orange button ani tada" @click ="loginGoogle()" v-if="!user"><i class = "google icon"/>google登入</button>
+          <button type="button" class = "ui huge blue button ani tada" @click ="logout()" v-else>
             <img id = "r" :src="photoURL" />
             <i class = "sign-out icon"/>登出</button>
         </div>
@@ -184,7 +184,7 @@ export default {
   metaInfo: {
     title: '歡迎',
   },
-  props: ['numbers', 'myS', 'myTotal', 'myToDay'],
+  props: ['numbers', 'myTotal', 'myToDay'],
   data: () => ({
       step: 1,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
@@ -205,6 +205,13 @@ export default {
       photoURL: '',
       dismiss: false,
   }),
+  computed: {
+    myS () {
+      const ans = (this.myTotal || 0) * 100 / 10000000
+      // console.log(ans)
+      return ans
+    }
+  },
   methods: {
     par (u) {
       if (u == 'https://bestian.github.io/number/img/number.jpeg') {
@@ -254,16 +261,15 @@ export default {
         number: this.number
       }
       if (this.number && parseInt(this.number) > 0) {
-
         if (this.numbers.filter(function (o) {
           return o.n === vm.name && o.date === vm.date
         }).length === 0) {
           arr.push(o)
-          console.log(arr)
-          this.number = 0;
+          // console.log(arr)
           set(ref(db, 'numbers'), arr).then(() => {
             window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
             localStorage.name = this.name;
+            this.number = 0;
           })
         } else {
           window.alert('您今天已登入過，請明天再來')

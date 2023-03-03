@@ -28,12 +28,11 @@
         </div>
       </div>
     </div>
-    <router-view :numbers="numbers" :myS = "myS" :myTotal = "myTotal" :myToDay="myToDay"/>
+    <router-view :numbers="numbers" :myTotal = "myTotal" :myToDay="myToDay"/>
   </div>
 </template>
 
 <script>
-import { BeforeInstallPromptEvent } from "vue-pwa-install";
 import { db } from './firebase'
 import { ref, onValue } from 'firebase/database'
 
@@ -47,18 +46,10 @@ export default {
   },
   data() {
     return {
-      oldNumbers: [],
-      numbers: [],
-      deferredPrompt: BeforeInstallPromptEvent
+      numbers: []
     }
   },
   computed: {
-    myS () {
-      // var ans = (this.countTotal || 0) / 10000000
-      const ans = (this.myTotal || 0) * 100 / 10000000
-      console.log(ans)
-      return ans
-    },
     myToDay () {
       var ans = 0
       for (var i = 0; i < this.numbers.length; i++) {
@@ -71,7 +62,7 @@ export default {
           ans += parseInt(n.number)
         }
       }
-      console.log(ans)
+      // console.log(ans)
       return ans
     },
     myTotal () {
@@ -79,51 +70,23 @@ export default {
       for (var i = 0; i < this.numbers.length; i++) {
         let n = this.numbers[i]
         if (!n.notJoin &&
-            (
-              new Date(n.time).getFullYear() === 2022 && new Date(n.time).getMonth() == 11 && new Date(n.time).getDate() >= 25
-            ) || ( new Date(n.time).getFullYear() > 2022)) {
+            ((
+              new Date(n.time).getFullYear() === 2023 && new Date(n.time).getMonth() >= 2
+            ) || ( new Date(n.time).getFullYear() > 2023))) {
           // console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
       }
-      console.log(ans)
+      // console.log(ans)
       return ans
     }
   },
-  created() {
-    var vm = this;
-    this.$on("canInstall", (event) => {
-      // Prevent Chrome 67 and earlier from automatically showing the prompt:
-      event.preventDefault();
-
-      // Stash the event so it can be triggered later:
-      this.deferredPrompt = event;
-    });
-    window.addEventListener("appinstalled", () => {
-      vm.deferredPrompt = null;
-      console.log("PWA was installed");
-    });
-    window.addEventListener('beforeinstallprompt',(event)=>{
-      console.log('Default a2hs triggered' ,event);
-      // here preventing default prompt
-      event.preventDefault();
-      // storing that event
-      vm.deferredPrompt = event;
-      return false;
-    })
-  },
   mounted () {
     const vm = this
-    this.axios.get('./data/data-2022-10.json', {
-        headers: {'Access-Control-Allow-Origin': '*'
-      }}).then((data) => {
-      // console.log(data.data)
-      this.oldNumbers = data.data.numbers
-    })
     onValue(ref(db, 'numbers'), (snapshot) => {
       const data = snapshot.val()
-      // console.log(data)
       vm.numbers = vm.obj_to_list(data)
+      vm.$forceUpdate()
     })
   },
   methods: {
