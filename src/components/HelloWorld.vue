@@ -27,20 +27,20 @@
 
     <div class="ui segment container" v-show="step == 1">
 
-      <h2 class="ui header">千萬佛號活動</h2>
+      <h2 class="ui header">2022年春季千萬佛號活動</h2>
 
       <div class="ui active inverted dimmer" v-show="!myTotal">
         <div class="ui text loader">資料載入中...</div>
       </div>
 
       <div v-show="myTotal" class="ui indicating green progress" :data-value="myTotal" data-total="10000000" id="ex">
-        <div class="bar" :style="{width: myS + '%'}">
+        <div class="bar" :style="{width: (myTotal / 100000) + '%'}">
           <div class="progress"></div>
         </div>
         <div class="label">已達成：{{ myTotal }} / 10000000</div>
       </div>
 
-      <div v-show="myToDay" class="label">本日加總：{{ myToDay }}</div>
+      <div v-show="myToDay" class="label">本日加總：{{ myToDay }}聲佛號</div>
 
       <h4 class="ui header">
         2023 永明佛寺行腳行程表
@@ -121,11 +121,11 @@
     </select>
 
     <div class="ui list container left aligned" v-show="mode == 'today' && step == 1">
-      <div class="item" v-for = "n in t(s(numbers))" :key="n.n + n.date"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "(n, idx) in t(s(numbers))" :key="n.n + n.date + idx"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui list container left aligned" v-show="mode == 'all' && step == 1">
-      <div class="item" v-for = "n in s(numbers)" :key="n.n + n.date"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "(n, idx) in s(numbers)" :key="n.n + n.date + idx"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui divider" v-show="step == 1"></div>
@@ -184,7 +184,7 @@ export default {
   metaInfo: {
     title: '歡迎',
   },
-  props: ['numbers', 'myS', 'myTotal', 'myToDay'],
+  props: ['numbers', 'myTotal', 'myToDay'],
   data: () => ({
       step: 1,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
@@ -259,7 +259,7 @@ export default {
           return o.n === vm.name && o.date === vm.date
         }).length === 0) {
           arr.push(o)
-          console.log(arr)
+          // console.log(arr)
           this.number = 0;
           set(ref(db, 'numbers'), arr).then(() => {
             window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
