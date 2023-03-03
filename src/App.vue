@@ -23,11 +23,11 @@
         <span class="fat-only">88佛</span></router-link>
         <a class = "item fat-only" href="https://sites.google.com/view/innerpurelight/%E9%A6%96%E9%A0%81" target="_blank"><i class ="globe icon"/>台東永明佛寺</a>
         <a class = "item fat-only" href="https://github.com/bestian/number" target="_blank"><i class ="github icon"/>原始碼</a>
-        <div class="wide item">
+        <!-- <div class="wide item">
           <ShareNetwork class="ui blue button" network="facebook" url="https://bestian.github.io/number/" description="念佛號" quote="一個統計念佛號的小程式，您可以每天登錄您念的佛號數">
             <i class="ui share icon"/>
             | 分享
-          </ShareNetwork>
+          </ShareNetwork> -->
         </div>
       </div>
     </div>
