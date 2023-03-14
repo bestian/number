@@ -42,12 +42,12 @@
 
       <div v-show="myToDay" class="label">本日加總：{{ myToDay }}聲佛號</div>
 
-      <h4 class="ui header">
+      <!-- <h4 class="ui header">
         2023 永明佛寺行腳行程表
       <br/>
         <a href="https://docs.google.com/spreadsheets/d/19pJLqZK6HpKzg1W9rxkezJ2_g4BM5-FspMF3qZaLPQI/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
         行程表請按此</a>
-      </h4>
+      </h4> -->
 
       <h4 class="ui header">
         永明佛寺點亮心燈光明燈迴向表：
@@ -264,9 +264,11 @@ export default {
         if (this.numbers.filter(function (o) {
           return o.n === vm.name && o.date === vm.date
         }).length === 0) {
+          const idx = arr.length
           arr.push(o)
           // console.log(arr)
-          set(ref(db, 'numbers'), arr).then(() => {
+          console.log('push new data')
+          set(ref(db, 'numbers/' + idx), o).then(() => {
             window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
             localStorage.name = this.name;
             this.number = 0;
