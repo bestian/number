@@ -245,7 +245,7 @@ export default {
     },
     addNumber () {
       const vm = this
-      var arr = [ ...this.numbers]
+      var arr = this.obj_to_list(this.numbers)
       if (!this.name) {
         alert('請輸入您的大名');
         return;
