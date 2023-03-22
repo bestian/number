@@ -167,6 +167,7 @@
         </div>
       </div>
     </form>
+    <div id = "container" style="disply:none"></div>
 
   </div>
 </template>
@@ -246,6 +247,8 @@ export default {
     addNumber () {
       const vm = this
       var arr = this.obj_to_list(this.numbers)
+      // console.log(arr)
+      
       if (!this.name) {
         alert('請輸入您的大名');
         return;
@@ -268,7 +271,7 @@ export default {
           arr.push(o)
           // console.log(arr)
           console.log('push new data')
-          set(ref(db, 'numbers/' + idx), o).then(() => {
+          set(ref(db, 'numbers'), arr).then(() => {
             window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
             localStorage.name = this.name;
             this.number = 0;
