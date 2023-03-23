@@ -88,8 +88,9 @@ export default {
       // console.log(data)
       if (Array.isArray(data)) {
         vm.numbers = data
+      } else {
+        vm.numbers = vm.obj_to_list(data)
       }
-      vm.numbers = vm.obj_to_list(data)
       vm.$forceUpdate()
     })
   },
