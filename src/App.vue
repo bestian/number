@@ -70,15 +70,14 @@ export default {
       var ans = 0
       for (var i = 0; i < this.numbers.length; i++) {
         let n = this.numbers[i]
-        if (!n.notJoin &&
-            ((
-              new Date(n.time).getFullYear() === 2023 && new Date(n.time).getMonth() >= 2
-            ) || ( new Date(n.time).getFullYear() > 2023))) {
+        // console.log(new Date(n.time).getFullYear())
+        if ((new Date(n.time).getFullYear() > 2023) || ((new Date(n.time).getFullYear() == 2023) && (new Date(n.time).getMonth() >= 2))) {
           // console.log(parseInt(n.number))
           ans += parseInt(n.number)
         }
+        // console.log(ans)
       }
-      // console.log(ans)
+      console.log(ans)
       return ans
     }
   },
@@ -86,6 +85,10 @@ export default {
     const vm = this
     onValue(ref(db, 'numbers'), (snapshot) => {
       const data = snapshot.val()
+      // console.log(data)
+      if (Array.isArray(data)) {
+        vm.numbers = data
+      }
       vm.numbers = vm.obj_to_list(data)
       vm.$forceUpdate()
     })

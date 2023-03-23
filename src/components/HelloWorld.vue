@@ -238,6 +238,9 @@ export default {
       return l
     },
     obj_to_list (obj) {
+      if (Array.isArray(obj)) {
+        return obj
+      }
       const ks = Object.keys(obj)
       const list = ks.map(function (i) {
         return obj[i]
