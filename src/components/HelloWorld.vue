@@ -275,7 +275,7 @@ export default {
           arr.push(o)
           // console.log(arr)
           console.log('push new data')
-          set(ref(db, 'numbers'), arr).then(() => {
+          set(ref(db, 'names'), arr).then(() => {
             window.alert('登入成功:' + o.n + '今天念了' + o.number +  '聲佛號')
             localStorage.name = this.name;
             this.number = 0;

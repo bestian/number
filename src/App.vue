@@ -83,7 +83,7 @@ export default {
   },
   mounted () {
     const vm = this
-    onValue(ref(db, 'numbers'), (snapshot) => {
+    onValue(ref(db, 'names'), (snapshot) => {
       const data = snapshot.val()
       // console.log(data)
       if (Array.isArray(data)) {
