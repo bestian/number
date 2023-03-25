@@ -27,7 +27,7 @@
 
     <div class="ui segment container" v-show="step == 1">
 
-      <h2 class="ui header">2023春李千萬佛號活動</h2>
+      <h2 class="ui header">2023春季千萬佛號活動</h2>
 
       <div class="ui active inverted dimmer" v-show="!myTotal">
         <div class="ui text loader">資料載入中...</div>
