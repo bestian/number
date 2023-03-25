@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <router-view :numbers="getNumbers()" :myTotal = "myTotal" :myToDay="myToDay"/>
+    <router-view :numbers="numbers" :allnumbers="getNumbers()" :myTotal = "myTotal" :myToDay="myToDay"/>
   </div>
 </template>
 

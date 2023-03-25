@@ -125,7 +125,7 @@
     </div>
 
     <div class="ui list container left aligned" v-show="mode == 'all' && step == 1">
-      <div class="item" v-for = "(n, j) in s(numbers)" :key="j"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
+      <div class="item" v-for = "(n, j) in s(allnumbers)" :key="j"> <img class="avatar" :src="par(n.photoURL)" v-show="n.photoURL" :alt="n.n"/> {{n.date}}: {{n.n}}念了<span class="highlight"> {{parseInt(n.number)}} 聲</span>佛號!! </div>
     </div>
 
     <div class="ui divider" v-show="step == 1"></div>
@@ -185,7 +185,7 @@ export default {
   metaInfo: {
     title: '歡迎',
   },
-  props: ['numbers', 'myTotal', 'myToDay'],
+  props: ['numbers', 'myTotal', 'myToDay', 'allnumbers'],
   data: () => ({
       step: 1,
       date: new Date().getFullYear() +'/'+ parseInt(1+new Date().getMonth()) +'/'+ new Date().getDate(),
